@@ -19,6 +19,7 @@
 | [A102827 · decimal digit counts](https://lefttosolve.com/p/oeis-a102827) | Disproved the rule as written and implemented by the decimal Maple program. At index 331 the term 1002 introduces two zeros. The least eligible positive integer at index 332 is then 20. The calculation matches all 72 published table values and the later examples at indices 99–106 and 142. The base-two companion lists an increasing variant. | [Statement](../statements/oeis-a102827.lean) · [Disproof](../proofs/oeis-a102827.lean) · [Decimal program](https://oeis.org/A102827/internal) |
 | [A103528 · binary congruences as a first difference](https://lefttosolve.com/p/oeis-a103528) | Proved Kurkov’s 2022 formula. A downward rounding to a multiple of 2^k jumps exactly at the relevant congruence class. Summing those jumps, including the unit contribution at k=0, yields b(n)−b(n−1)=1+2a(n). | [Statement](../statements/oeis-a103528.lean) · [Proof](../proofs/oeis-a103528.lean) |
 | [A113768 · growth of a cube-root recurrence](https://lefttosolve.com/p/oeis-a113768) | Proved the 2024 asymptotic (2n/3)√(2n/3). Consecutive squared cube roots differ by a quantity tending to 2/3. Averaging these differences gives the claimed growth rate. | [Statement](../statements/oeis-a113768.lean) · [Proof](../proofs/oeis-a113768.lean) |
+| [A120069 · denominators of Catalan partial sums](https://lefttosolve.com/p/oeis-a120069) | Proved both denominator conjectures. The partial sum equals 4−(2n+1)C(n)/4ⁿ⁻¹, and its reduced denominator is exactly 2^(A283208(n)−2). | [Statement](../statements/oeis-a120069.lean) · [Proof](../proofs/oeis-a120069.lean) |
 | [A121860 · factorial divisor sum](https://lefttosolve.com/p/oeis-a121860) | Proved that the residue is 2 modulo every `k ≥ 3` once `n ≥ 2k+4`. Every summand from a proper factorization `n=ab`, with both factors at least two, is divisible by `k!`. The divisors 1 and `n` each contribute one. | [Statement](../statements/oeis-a121860.lean) · [Proof](../proofs/oeis-a121860.lean) |
 | [A127769 · binomial recurrence](https://lefttosolve.com/p/oeis-a127769) | Proved the proposed ratio between consecutive positive-index terms by cancelling factorials. | [Statement](../statements/oeis-a127769.lean) · [Proof](../proofs/oeis-a127769.lean) |
 | [A152661 · permutations](https://lefttosolve.com/p/oeis-a152661) | Proved both the recurrence and the identity with A077613 by counting labels of each parity. | [Statement](../statements/oeis-a152661.lean) · [Proof](../proofs/oeis-a152661.lean) |
@@ -56,7 +57,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A038663 | [#8946](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8946) | Awaiting statement |
 | A052183 | [#7787](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7787) | [Proof #9178](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9178) |
 | A054341 | [#9106](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9106) | Awaiting statement |
-| A059837 | [#8818](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8818) | Awaiting statement |
+| A059837 | [#8818](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8818) | [Disproof #10089](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10089) |
 | A062071 | [#9125](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9125) | Awaiting statement |
 | A071033 | [#7920](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7920) | [Proof #9298](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9298) |
 | A071622 | [#7695](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7695) | [Disproof #9140](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9140) |
@@ -65,9 +66,10 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A088276 | [#9834](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9834) | Awaiting statement |
 | A092674 | [#9750](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9750) | Awaiting statement |
 | A100682 | [#7921](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7921) | [Disproof #9311](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9311) |
-| A102827 | [#8778](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8778) | Awaiting statement |
-| A103528 | Statement prepared | Awaiting statement |
+| A102827 | [#8778](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8778) | [Disproof #10022](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10022) |
+| A103528 | [#9923](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9923) | Awaiting statement |
 | A113768 | [#9608](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9608) | Awaiting statement |
+| A120069 | Statement prepared | Awaiting statement |
 | A121860 | [#8822](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8822) | Awaiting statement |
 | A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | [Proof #9200](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9200) |
 | A152661 | [#7583](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7583) | Awaiting statement |
@@ -81,8 +83,8 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A248520 | [#9434](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9434) | Awaiting statement |
 | A248521 | [#9344](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9344) | Awaiting statement |
 | A257838 | [#8802](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8802) | Awaiting statement |
-| A259775 | [#8764](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8764) | Awaiting statement |
-| A259914 | [#8791](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8791) | Awaiting statement |
+| A259775 | [#8764](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8764) | [Proof #9983](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9983) |
+| A259914 | [#8791](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8791) | [Proof #10050](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10050) |
 | A295432 | [#8854](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8854) | Awaiting statement |
 | A334337 | [#9821](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9821) | Awaiting statement |
 | A345096 | [#9498](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9498) | Awaiting statement |
