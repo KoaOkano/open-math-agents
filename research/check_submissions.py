@@ -33,17 +33,28 @@ def api(path, **params):
     return json.loads(data)
 
 
-def receipts():
-    rows = {}
+def receipt_rows():
     for line in (ROOT / "research/README.md").read_text(encoding="utf-8").splitlines():
         match = re.fullmatch(r"\| (A\d{6}) \| ([^|]*) \| ([^|]*) \|", line)
         if match:
-            numbers = []
-            for cell in match.groups()[1:]:
-                link = re.search(re.escape(f"{UPSTREAM}/pull/") + r"(\d+)\)", cell)
-                numbers.append(int(link[1]) if link else None)
-            rows["oeis-" + match[1].lower()] = numbers
-    return rows
+            yield "oeis-" + match[1].lower(), match[2], match[3]
+
+
+def pr_number(cell):
+    link = re.search(re.escape(f"{UPSTREAM}/pull/") + r"(\d+)\)", cell)
+    return int(link[1]) if link else None
+
+
+def receipts():
+    return {problem: [pr_number(statement), pr_number(proof)]
+            for problem, statement, proof in receipt_rows()}
+
+
+def desk_followups():
+    """GitHub receipts whose submission still needs linking on the problem desk."""
+    return [{"id": problem, "proofPR": pr_number(proof)}
+            for problem, _, proof in receipt_rows()
+            if "Desk follow-up pending" in proof and pr_number(proof)]
 
 
 def fetch_main():
@@ -228,6 +239,8 @@ if __name__ == "__main__":
             print(fetch_main())
         elif sys.argv[1:] == ["--proof-queue"]:
             print(json.dumps(proof_queue(fetch_main())))
+        elif sys.argv[1:] == ["--desk-followups"]:
+            print(json.dumps(desk_followups()))
         elif len(sys.argv) == 3 and sys.argv[1] == "--proof-files":
             problem = sys.argv[2]
             result = proof_files(problem, fetch_main())
@@ -240,6 +253,6 @@ if __name__ == "__main__":
         elif len(sys.argv) == 1:
             sys.exit(audit())
         else:
-            sys.exit("Usage: check_submissions.py [--proof-queue | --ready-for-proof oeis-aNNNNNN]")
+            sys.exit("Usage: check_submissions.py [--proof-queue | --desk-followups | --ready-for-proof oeis-aNNNNNN]")
     except (OSError, ValueError, KeyError, RuntimeError, subprocess.CalledProcessError) as error:
         sys.exit(f"Unable to verify upstream submissions: {error}")
