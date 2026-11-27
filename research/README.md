@@ -42,6 +42,7 @@
 | [A345096 · an asymptotic for a floor-and-ceiling double sum](https://lefttosolve.com/p/oeis-a345096) | Proved Kotesovec’s n²/2 asymptotic. Subtracting the triangular number leaves at most n times the divisor count. Pairing divisors gives an explicit error bound of 2n(⌊√n⌋+1). | [Statement](../statements/oeis-a345096.lean) · [Proof](../proofs/oeis-a345096.lean) |
 | [A366860 · nested recurrence with denominator 3](https://lefttosolve.com/p/oeis-a366860) | Proved the slope $c=(\sqrt{21}-3)/2$, the error bound $\lvert a(n)-cn\rvert\le16\sqrt n$, and convergence of the periodic continued fraction to $c$. | [Statement](../statements/oeis-a366860.lean) · [Proof](../proofs/oeis-a366860.lean) |
 | [A366870 · nested recurrence with denominator 4](https://lefttosolve.com/p/oeis-a366870) | Proved the slope $c=2(\sqrt2-1)$, the error bound $\lvert a(n)-cn\rvert\le16\sqrt n$, and convergence of the periodic continued fraction to $c$. | [Statement](../statements/oeis-a366870.lean) · [Proof](../proofs/oeis-a366870.lean) |
+| [A390246 · distinct multiples in an interval](https://lefttosolve.com/p/oeis-a390246) | Proved Bill McEachen’s identity between the two least endpoints. The same injective matching works in both definitions. The Erdős–Pomerance asymptotic question remains open. | [Statement](../statements/oeis-a390246.lean) · [Proof](../proofs/oeis-a390246.lean) |
 | [A393794 · 1089 trick](https://lefttosolve.com/p/oeis-a393794) | Disproved the uniqueness assertion at index 5. Both 108,910,890 and 109,999,890 are nine-digit fixed points. The Lean kernel checked the disproof. | [Statement](../statements/oeis-a393794.lean) · [Disproof](../proofs/oeis-a393794.lean) |
 | [A401895 · reversal products](https://lefttosolve.com/p/oeis-a401895) | Finite search excludes products consisting of an even number of sixes for inputs of 2–601 digits. The conjecture is open. | [Search and derivation](a401895/README.md) |
 
@@ -54,8 +55,8 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | Problem | Statement review | Proof or disproof review |
 | --- | --- | --- |
 | A006501 | [#7979](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7979) | Awaiting statement |
-| A026008 | [#9011](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9011) | Awaiting statement |
-| A038663 | [#8946](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8946) | Awaiting statement |
+| A026008 | [#9011](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9011) | [Proof #10278](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10278) |
+| A038663 | [#8946](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8946) | [Proof #10296](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10296) |
 | A052183 | [#7787](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7787) | [Proof #9178](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9178) |
 | A054341 | [#9106](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9106) | Awaiting statement |
 | A059837 | [#8818](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8818) | [Disproof #10089](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10089) |
@@ -69,15 +70,15 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A100682 | [#7921](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7921) | [Disproof #9311](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9311) |
 | A102827 | [#8778](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8778) | [Disproof #10022](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10022) |
 | A103528 | [#9923](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9923) | Awaiting statement |
-| A113023 | Statement prepared | Awaiting statement |
+| A113023 | [#10265](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10265) | Awaiting statement |
 | A113768 | [#9608](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9608) | Awaiting statement |
 | A120069 | [#10122](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10122) | Awaiting statement |
 | A121860 | [#8822](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8822) | [Proof #10109](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10109) |
 | A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | [Proof #9200](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9200) |
 | A152661 | [#7583](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7583) | Awaiting statement |
 | A168494 | [#7586](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7586) | Awaiting statement |
-| A191993 | [#7657](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7657) | [Proof #9059](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9059) |
-| A207262 | [#7652](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7652) | [Proof #9003](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9003) |
+| A191993 | [#7657](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7657) | [Proof #9059, merged](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9059) · [Official acceptance; source verification pending](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9059#issuecomment-7225402384) |
+| A207262 | [#7652](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7652) | [Our checked proof #9003](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9003) · [Another solver’s proof merged first](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8986) · [Checker’s final message](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9003#issuecomment-7225358913) |
 | A217280 | [#9287](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9287) | Awaiting statement |
 | A248183 | [#8021](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8021) | Awaiting statement |
 | A248186 | [#8097](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8097) | Awaiting statement |
@@ -92,6 +93,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A345096 | [#9498](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9498) | Awaiting statement |
 | A366860 | [#9625](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9625) | Awaiting statement |
 | A366870 | [#9631](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9631) | Awaiting statement |
+| A390246 | Statement prepared | Awaiting statement |
 | A393794 | [#7536](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7536) | [Disproof #7726, merged](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726) · [Official acceptance](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726#issuecomment-7224024391) · [35 points to KoaOkano; source statement under verification](https://lefttosolve.com/p/oeis-a393794) |
 
 Run `python research/check_submissions.py` when resuming work and after a submission. Before opening any proof or disproof PR, run `python research/check_submissions.py --ready-for-proof oeis-aNNNNNN`. Wait for a merged statement review on upstream `main`, and check the proof against that exact statement. Once eligible, submit the single file under `proofs/` and record its official PR here. The results table links to the research files while review is pending. A result is accepted when its proof PR merges upstream.
