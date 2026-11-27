@@ -34,6 +34,7 @@
 | [A130095 · successive Fibonacci divisor sums](https://lefttosolve.com/p/oeis-a130095) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a130095.lean) |
 | [A138467 · exact floor formula for a nested recurrence](https://lefttosolve.com/p/oeis-a138467) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a138467.lean) |
 | [A152661 · permutations](https://lefttosolve.com/p/oeis-a152661) | Proved both the recurrence and the identity with A077613 by counting labels of each parity. | [Statement](../statements/oeis-a152661.lean) · [Proof](../proofs/oeis-a152661.lean) |
+| [A152920 · a weighted transform of a triangle](https://lefttosolve.com/p/oeis-a152920) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a152920.lean) |
 | [A156100 · the fourth-root limit for Hanna's exponential series](https://lefttosolve.com/p/oeis-a156100) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a156100.lean) |
 | [A159596 · growth of iterated Euler derivatives](https://lefttosolve.com/p/oeis-a159596) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a159596.lean) |
 | [A160389 · The heptagon quotient of two integer sequences](https://lefttosolve.com/p/oeis-a160389) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a160389.lean) |
@@ -138,6 +139,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A130095 | [#12250](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/12250) · [Statement activity linked](https://lefttosolve.com/p/oeis-a130095) | Checked proof held locally until statement merge |
 | A138467 | [#11044](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/11044) · [Statement activity linked](https://lefttosolve.com/p/oeis-a138467) | Checked proof held locally until statement merge |
 | A152661 | [#7583](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7583) | [Proof #13544](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/13544) |
+| A152920 | [#13885](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/13885) | Checked proof held locally until statement merge |
 | A156100 | [#13185](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/13185) | Checked proof held locally until statement merge |
 | A159596 | [#13235](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/13235) | Checked proof held locally until statement merge |
 | A160389 | [#11514](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/11514) · [Statement activity linked](https://lefttosolve.com/p/oeis-a160389) | Checked proof held locally until statement merge |
