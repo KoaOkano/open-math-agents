@@ -88,7 +88,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A168494 | [#7586](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7586) | Awaiting statement |
 | A191993 | [#7657](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7657) | [Proof #9059, merged](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9059) · [Official acceptance; source verification pending](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9059#issuecomment-7225402384) |
 | A192473 | [#9590](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9590) | [Proof #10688](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10688) · Desk follow-up pending |
-| A192940 | [#9532](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9532) | Statement merged. Checked proof ready |
+| A192940 | [#9532](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9532) | [Proof #10708](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10708) · Desk follow-up pending |
 | A192942 | [#9543](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9543) | [Proof #10693](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10693) · Desk follow-up pending |
 | A207262 | [#7652](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7652) | [Our checked proof #9003](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9003) · [Another solver’s proof merged first](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8986) · [Checker’s final message](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9003#issuecomment-7225358913) |
 | A217280 | [#9287](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9287) | Awaiting statement |
