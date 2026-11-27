@@ -12,6 +12,7 @@
 | [A071033 · Rule 94](https://lefttosolve.com/p/oeis-a071033) | Proved both decimal floor formulas. Two applications of the cellular automaton insert four alternating bits between fixed boundary words. | [Statement](../statements/oeis-a071033.lean) · [Proof](../proofs/oeis-a071033.lean) |
 | [A071622 · parity of powers of 4/3](https://lefttosolve.com/p/oeis-a071622) | Disproved the logarithmic lower bound at `n = 18,966`. Exactly 9,483 floors are odd and 9,483 are even, giving `a(n) = 0`. The Lean kernel checks the sum using exact integer division. | [Statement](../statements/oeis-a071622.lean) · [Disproof](../proofs/oeis-a071622.lean) |
 | [A076902 · logarithmic error under halving](https://lefttosolve.com/p/oeis-a076902) | Proved the strict bound `|a(n)−n/3| < log(n+1)` at every positive index and deduced `a(n) ~ n/3`. Doubling reverses the signed error, and appending an odd bit subtracts one third. | [Statement](../statements/oeis-a076902.lean) · [Proof](../proofs/oeis-a076902.lean) |
+| [A077627 · exception to the continued-fraction ceiling formula](https://lefttosolve.com/p/oeis-a077627) | At n=29 the proposed ceiling is 16,568,689. The periodic part contains 16,568,690. Lean checks 722,190 integer continued-fraction steps, and the published table gives the same larger value. | [Statement](../statements/oeis-a077627.lean) · [Disproof](../proofs/oeis-a077627.lean) |
 | [A100682 · fourth roots of pentatope numbers](https://lefttosolve.com/p/oeis-a100682) | At `n = 634,027,531` the proposed floor is 286,454,273. The published sequence gives 286,454,274. Taking `n` as the upper index in the binomial coefficient instead gives 286,454,272. | [Statement](../statements/oeis-a100682.lean) · [Disproof](../proofs/oeis-a100682.lean) |
 | [A102827 · decimal digit counts](https://lefttosolve.com/p/oeis-a102827) | Disproved the rule as written and implemented by the decimal Maple program. At index 331 the term 1002 introduces two zeros. The least eligible positive integer at index 332 is then 20. The calculation matches all 72 published table values and the later examples at indices 99–106 and 142. The base-two companion lists an increasing variant. | [Statement](../statements/oeis-a102827.lean) · [Disproof](../proofs/oeis-a102827.lean) · [Decimal program](https://oeis.org/A102827/internal) |
 | [A121860 · factorial divisor sum](https://lefttosolve.com/p/oeis-a121860) | Proved that the residue is 2 modulo every `k ≥ 3` once `n ≥ 2k+4`. Every summand from a proper factorization `n=ab`, with both factors at least two, is divisible by `k!`. The divisors 1 and `n` each contribute one. | [Statement](../statements/oeis-a121860.lean) · [Proof](../proofs/oeis-a121860.lean) |
@@ -46,10 +47,11 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A054341 | [#9106](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9106) | Awaiting statement |
 | A059837 | [#8818](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8818) | Awaiting statement |
 | A062071 | [#9125](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9125) | Awaiting statement |
-| A071033 | [#7920](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7920) | Awaiting statement |
+| A071033 | [#7920](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7920) | [Proof #9298](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9298) |
 | A071622 | [#7695](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7695) | [Disproof #9140](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9140) |
 | A076902 | [#9175](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9175) | Awaiting statement |
-| A100682 | [#7921](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7921) | Awaiting statement |
+| A077627 | Statement prepared | Awaiting statement |
+| A100682 | [#7921](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7921) | [Disproof #9311](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9311) |
 | A102827 | [#8778](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8778) | Awaiting statement |
 | A121860 | [#8822](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8822) | Awaiting statement |
 | A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | [Proof #9200](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9200) |
@@ -57,7 +59,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A168494 | [#7586](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7586) | Awaiting statement |
 | A191993 | [#7657](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7657) | [Proof #9059](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9059) |
 | A207262 | [#7652](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7652) | [Proof #9003](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9003) |
-| A217280 | Statement prepared | Awaiting statement |
+| A217280 | [#9287](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9287) | Awaiting statement |
 | A248183 | [#8021](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8021) | Awaiting statement |
 | A248186 | [#8097](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8097) | Awaiting statement |
 | A248231 | [#8169](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8169) | Awaiting statement |
@@ -65,6 +67,6 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A259775 | [#8764](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8764) | Awaiting statement |
 | A259914 | [#8791](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8791) | Awaiting statement |
 | A295432 | [#8854](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8854) | Awaiting statement |
-| A393794 | [#7536](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7536) | [Disproof #7726, merged](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726) · [Official acceptance and credit](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726#issuecomment-7224024391) |
+| A393794 | [#7536](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7536) | [Disproof #7726, merged](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726) · [Official acceptance](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726#issuecomment-7224024391) · [35 points to KoaOkano; source statement under verification](https://lefttosolve.com/p/oeis-a393794) |
 
 Run `python research/check_submissions.py` when resuming work and after a submission. Before opening any proof or disproof PR, run `python research/check_submissions.py --ready-for-proof oeis-aNNNNNN`. Wait for a merged statement review on upstream `main`, and check the proof against that exact statement. Once eligible, submit the single file under `proofs/` and record its official PR here. The results table links to the research files while review is pending. A result is accepted when its proof PR merges upstream.
