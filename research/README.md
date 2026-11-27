@@ -23,6 +23,7 @@
 | [A120069 · denominators of Catalan partial sums](https://lefttosolve.com/p/oeis-a120069) | Proved both denominator conjectures. The partial sum is $4-(2n+1)C_n/4^{n-1}$, and its reduced denominator is $2^{A283208(n)-2}$. | [Statement](../statements/oeis-a120069.lean) · [Proof](../proofs/oeis-a120069.lean) |
 | [A121860 · factorial divisor sum](https://lefttosolve.com/p/oeis-a121860) | Proved that the residue is 2 modulo every `k ≥ 3` once `n ≥ 2k+4`. Every summand from a proper factorization `n=ab`, with both factors at least two, is divisible by `k!`. The divisors 1 and `n` each contribute one. | [Statement](../statements/oeis-a121860.lean) · [Proof](../proofs/oeis-a121860.lean) |
 | [A127769 · binomial recurrence](https://lefttosolve.com/p/oeis-a127769) | Proved the proposed ratio between consecutive positive-index terms by cancelling factorials. | [Statement](../statements/oeis-a127769.lean) · [Proof](../proofs/oeis-a127769.lean) |
+| [A128939 · maximal product of restricted partition parts](https://lefttosolve.com/p/oeis-a128939) | Proved the maximum for every positive n and exhibited a partition attaining it in every residue class. Among parts congruent to one modulo three, any part p ≥ 10 can be replaced by 4, p−6, 1, 1 without reducing its product. | [Statement](../statements/oeis-a128939.lean) · [Proof](../proofs/oeis-a128939.lean) |
 | [A152661 · permutations](https://lefttosolve.com/p/oeis-a152661) | Proved both the recurrence and the identity with A077613 by counting labels of each parity. | [Statement](../statements/oeis-a152661.lean) · [Proof](../proofs/oeis-a152661.lean) |
 | [A168494 · Hankel sequence](https://lefttosolve.com/p/oeis-a168494) | Disproved the printed recurrence. Its left side equals 7,936 at `n = 6`. Two terms in the source have the same subscript. | [Statement](../statements/oeis-a168494.lean) · [Disproof](../proofs/oeis-a168494.lean) |
 | [A191993 · central binomial coefficients](https://lefttosolve.com/p/oeis-a191993) | Proved Mathar's recurrence for the sum of a power of three and half a central binomial coefficient. | [Statement](../statements/oeis-a191993.lean) · [Proof](../proofs/oeis-a191993.lean) |
@@ -75,6 +76,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A120069 | [#10122](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10122) | Awaiting statement |
 | A121860 | [#8822](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8822) | [Proof #10109](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10109) |
 | A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | [Proof #9200](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9200) |
+| A128939 | Statement prepared | Awaiting statement |
 | A152661 | [#7583](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7583) | Awaiting statement |
 | A168494 | [#7586](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7586) | Awaiting statement |
 | A191993 | [#7657](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7657) | [Proof #9059, merged](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9059) · [Official acceptance; source verification pending](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9059#issuecomment-7225402384) |
@@ -93,7 +95,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A345096 | [#9498](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9498) | Awaiting statement |
 | A366860 | [#9625](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9625) | Awaiting statement |
 | A366870 | [#9631](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9631) | Awaiting statement |
-| A390246 | Statement prepared | Awaiting statement |
+| A390246 | [#10366](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10366) | Awaiting statement |
 | A393794 | [#7536](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7536) | [Disproof #7726, merged](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726) · [Official acceptance](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726#issuecomment-7224024391) · [35 points to KoaOkano; source statement under verification](https://lefttosolve.com/p/oeis-a393794) |
 
 Run `python research/check_submissions.py` when resuming work and after a submission. Before opening any proof or disproof PR, run `python research/check_submissions.py --ready-for-proof oeis-aNNNNNN`. Wait for a merged statement review on upstream `main`, and check the proof against that exact statement. Once eligible, submit the single file under `proofs/` and record its official PR here. The results table links to the research files while review is pending. A result is accepted when its proof PR merges upstream.
