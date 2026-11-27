@@ -7,6 +7,7 @@
 | [A071033 · Rule 94](https://lefttosolve.com/p/oeis-a071033) | Proved both decimal floor formulas. Two applications of the cellular automaton insert four alternating bits between fixed boundary words. | [Statement](../statements/oeis-a071033.lean) · [Proof](../proofs/oeis-a071033.lean) |
 | [A071622 · parity of powers of 4/3](https://lefttosolve.com/p/oeis-a071622) | Disproved the logarithmic lower bound at `n = 18,966`. Exactly 9,483 floors are odd and 9,483 are even, giving `a(n) = 0`. The Lean kernel checks the sum using exact integer division. | [Statement](../statements/oeis-a071622.lean) · [Disproof](../proofs/oeis-a071622.lean) |
 | [A100682 · fourth roots of pentatope numbers](https://lefttosolve.com/p/oeis-a100682) | At `n = 634,027,531` the proposed floor is 286,454,273. The published sequence gives 286,454,274. Taking `n` as the upper index in the binomial coefficient instead gives 286,454,272. | [Statement](../statements/oeis-a100682.lean) · [Disproof](../proofs/oeis-a100682.lean) |
+| [A121860 · factorial divisor sum](https://lefttosolve.com/p/oeis-a121860) | Proved that the residue is 2 modulo every `k ≥ 3` once `n ≥ 2k+4`. Every summand from a proper factorization `n=ab`, with both factors at least two, is divisible by `k!`. The divisors 1 and `n` each contribute one. | [Statement](../statements/oeis-a121860.lean) · [Proof](../proofs/oeis-a121860.lean) |
 | [A127769 · binomial recurrence](https://lefttosolve.com/p/oeis-a127769) | Proved the proposed ratio between consecutive positive-index terms by cancelling factorials. | [Statement](../statements/oeis-a127769.lean) · [Proof](../proofs/oeis-a127769.lean) |
 | [A152661 · permutations](https://lefttosolve.com/p/oeis-a152661) | Proved both the recurrence and the identity with A077613 by counting labels of each parity. | [Statement](../statements/oeis-a152661.lean) · [Proof](../proofs/oeis-a152661.lean) |
 | [A168494 · Hankel sequence](https://lefttosolve.com/p/oeis-a168494) | Disproved the printed recurrence. Its left side equals 7,936 at `n = 6`. Two terms in the source have the same subscript. | [Statement](../statements/oeis-a168494.lean) · [Disproof](../proofs/oeis-a168494.lean) |
@@ -35,6 +36,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A071033 | [#7920](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7920) | Awaiting statement |
 | A071622 | [#7695](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7695) | Awaiting statement |
 | A100682 | [#7921](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7921) | Awaiting statement |
+| A121860 | Statement prepared | [Checked proof](../proofs/oeis-a121860.lean) |
 | A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | Awaiting statement |
 | A152661 | [#7583](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7583) | Awaiting statement |
 | A168494 | [#7586](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7586) | Awaiting statement |

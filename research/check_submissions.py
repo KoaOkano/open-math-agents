@@ -39,6 +39,21 @@ def receipts():
     return rows
 
 
+def review_status(pr, stage):
+    if pr.get("comments"):
+        comments = api(f"/repos/{REPO}/issues/{pr['number']}/comments", per_page=100)
+        for comment in reversed(comments):
+            if comment["user"]["login"] not in ("github-actions[bot]", "GuillaumeBAUD-coder"):
+                continue
+            body = comment["body"]
+            if "GitHub refused the merge" in body:
+                return f"{stage} accepted by checker, upstream merge pending  {comment['html_url']}", False
+            verdict = re.search(r"\b(ACCEPTED|REJECTED|FAULT)\b", body)
+            if verdict:
+                return f"{stage} checker reported {verdict[1]}  {comment['html_url']}", verdict[1] == "REJECTED"
+    return f"{stage} under review", False
+
+
 def audit():
     git("fetch", "--quiet", "--no-tags", "--depth=1", UPSTREAM + ".git", "refs/heads/main")
     merged_paths = set(git("ls-tree", "-r", "--name-only", "FETCH_HEAD", "--", "proofs", "statements"))
@@ -81,17 +96,8 @@ def audit():
                 message = "REVIEW CLOSED PROOF"
                 needs_action = True
             else:
-                message = "proof under review"
-                if pr.get("comments"):
-                    comments = api(f"{issue_path}/{proof_pr}/comments", per_page=100)
-                    for comment in reversed(comments):
-                        if comment["user"]["login"] not in ("github-actions[bot]", "GuillaumeBAUD-coder"):
-                            continue
-                        verdict = re.search(r"\b(ACCEPTED|REJECTED|FAULT)\b", comment["body"])
-                        if verdict:
-                            message = f"checker reported {verdict[1]}  {comment['html_url']}"
-                            needs_action |= verdict[1] == "REJECTED"
-                            break
+                message, rejected = review_status(pr, "proof")
+                needs_action |= rejected
             print(f"{problem}  {message}  {UPSTREAM}/pull/{proof_pr}")
         elif file in merged_paths:
             print(f"{problem}  resolved upstream by a separate submission")
@@ -101,7 +107,9 @@ def audit():
         elif state_pr:
             pr = issues.get(state_pr) or api(f"{issue_path}/{state_pr}")
             if pr["state"] == "open":
-                print(f"{problem}  awaiting statement review  {UPSTREAM}/pull/{state_pr}")
+                message, rejected = review_status(pr, "statement")
+                needs_action |= rejected
+                print(f"{problem}  {message}  {UPSTREAM}/pull/{state_pr}")
             else:
                 print(f"{problem}  REVIEW CLOSED STATEMENT  {UPSTREAM}/pull/{state_pr}")
                 needs_action = True
