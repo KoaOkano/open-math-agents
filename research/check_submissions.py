@@ -67,7 +67,8 @@ def statement_desk_followups():
 def fetch_main():
     remote = UPSTREAM + ".git"
     tip = git("ls-remote", "--exit-code", remote, "refs/heads/main")[0].split()[0]
-    for attempt in range(3):
+    attempts = 8
+    for attempt in range(attempts):
         present = subprocess.run(["git", "-C", ROOT, "cat-file", "-e", f"{tip}^{{commit}}"],
                                  stderr=subprocess.DEVNULL)
         if present.returncode == 0:
@@ -76,9 +77,10 @@ def fetch_main():
                                   "--no-write-fetch-head", remote, tip], capture_output=True, text=True)
         if fetched.returncode == 0:
             return tip
-        if attempt == 2 or not ("shallow" in fetched.stderr or "lock" in fetched.stderr):
+        contention = ".lock" in fetched.stderr or "shallow file has changed" in fetched.stderr
+        if attempt + 1 == attempts or not contention:
             raise RuntimeError(fetched.stderr.strip() or "Unable to fetch upstream main")
-        time.sleep(attempt + 1)
+        time.sleep(min(5, attempt + 1))
 
 
 def proof_queue(tip):
