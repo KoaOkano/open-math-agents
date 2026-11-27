@@ -63,6 +63,7 @@
 | [A268965 · At most one complementary pair in a three-color grid](https://lefttosolve.com/p/oeis-a268965) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a268965.lean) |
 | [A269270 · A unique complementary pair in four colors](https://lefttosolve.com/p/oeis-a269270) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a269270.lean) |
 | [A270917 · growth of the binomial product](https://lefttosolve.com/p/oeis-a270917) | The full Lean disproof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a270917.lean) |
+| [A270923 · the mixed-product limit](https://lefttosolve.com/p/oeis-a270923) | The full Lean disproof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a270923.lean) |
 | [A273400 · digits of the triple Catalan iterate](https://lefttosolve.com/p/oeis-a273400) | Proved Puszkarz’s decimal-length conjecture with an explicit bound. Starting at n = 6, the triple Catalan iterate has strictly more than Catalan(n) decimal digits. The proof uses the Catalan ratio to bound the second and third iterations. | [Reviewed statement by anmolspace](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9688) · [Proof](../proofs/oeis-a273400.lean) |
 | [A276751 · square-root growth with weights k^(2r−1)](https://lefttosolve.com/p/oeis-a276751) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a276751.lean) |
 | [A276752 · square-root growth with weights k^(2r)](https://lefttosolve.com/p/oeis-a276752) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a276752.lean) |
@@ -148,7 +149,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A248186 | [#8097](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8097) | [Proof #12693](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/12693) |
 | A248231 | [#8169](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8169) | [Proof #12820](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/12820) |
 | A248520 | [#9434](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9434) | Awaiting statement |
-| A248521 | [#9344](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9344) | Awaiting statement |
+| A248521 | [#9344](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9344) | [Proof #13112](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/13112) |
 | A252782 | [#13079](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/13079) | Checked disproof held locally until statement merge |
 | A257838 | [#8802](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8802) | [Proof #10142](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10142) |
 | A259775 | [#8764](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8764) | [Proof #9983](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9983) |
@@ -157,6 +158,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A268965 | [#11684](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/11684) · [Statement activity linked](https://lefttosolve.com/p/oeis-a268965) | Checked proof held locally until statement merge |
 | A269270 | [#11718](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/11718) · [Statement activity linked](https://lefttosolve.com/p/oeis-a269270) | Checked proof held locally until statement merge |
 | A270917 | [#13030](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/13030) | Checked disproof held locally until statement merge |
+| A270923 | [#13130](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/13130) | Checked disproof held locally until statement merge |
 | A273400 | [#9688](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9688) | [Proof #10832](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10832) · [Desk activity linked](https://lefttosolve.com/p/oeis-a273400) |
 | A276751 | [#12481](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/12481) · [Statement activity linked](https://lefttosolve.com/p/oeis-a276751) | Checked proof held locally until statement merge |
 | A276752 | [#12469](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/12469) · [Statement activity linked](https://lefttosolve.com/p/oeis-a276752) | Checked proof held locally until statement merge |
