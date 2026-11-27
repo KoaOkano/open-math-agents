@@ -20,6 +20,7 @@
 | [A168494 · Hankel sequence](https://lefttosolve.com/p/oeis-a168494) | Disproved the printed recurrence. Its left side equals 7,936 at `n = 6`. Two terms in the source have the same subscript. | [Statement](../statements/oeis-a168494.lean) · [Disproof](../proofs/oeis-a168494.lean) |
 | [A191993 · central binomial coefficients](https://lefttosolve.com/p/oeis-a191993) | Proved Mathar's recurrence for the sum of a power of three and half a central binomial coefficient. | [Statement](../statements/oeis-a191993.lean) · [Proof](../proofs/oeis-a191993.lean) |
 | [A207262 · divisor-power sums](https://lefttosolve.com/p/oeis-a207262) | Proved Ianakiev's quotient formula by splitting the divisors of twice an odd number into odd divisors and their doubles. | [Statement](../statements/oeis-a207262.lean) · [Proof](../proofs/oeis-a207262.lean) |
+| [A217280 · a base-five digit test](https://lefttosolve.com/p/oeis-a217280) | Proved that the weighted sum of cubed binomial coefficients has residue one exactly when every base-five digit is 0 or 2. All other indices give residue zero. Lucas’s theorem splits the sum into independent single-digit sums. | [Statement](../statements/oeis-a217280.lean) · [Proof](../proofs/oeis-a217280.lean) |
 | [A248183 · quadratic tail bound](https://lefttosolve.com/p/oeis-a248183) | Proved the proposed square-root floor gives the least admissible partial-sum index. The sum telescopes, and squares modulo four exclude the only possible rounding discrepancy. | [Statement](../statements/oeis-a248183.lean) · [Proof](../proofs/oeis-a248183.lean) |
 | [A248186 · cubic tail bound](https://lefttosolve.com/p/oeis-a248186) | Independently verified Oudra’s floor formula for Left to Solve. The cubic evaluated at the proposed threshold lies strictly between consecutive integers. The Omega Institute had already published a Lean proof. | [Statement](../statements/oeis-a248186.lean) · [Proof](../proofs/oeis-a248186.lean) · [Earlier proof](https://the-omega-institute.github.io/trureturing-mdbook/Problems/oudra-a248186-cubic-floor.html) |
 | [A248231 · tail of ζ(5)](https://lefttosolve.com/p/oeis-a248231) | Proved Oudra’s exact least-index formula. For positive `k`, the tail lies between `1/(2k(k+1)+2)²` and `1/(2k(k+1)+1)²`, strictly below the latter. The remaining rounding question follows from square residues modulo four. | [Statement](../statements/oeis-a248231.lean) · [Proof](../proofs/oeis-a248231.lean) · [Related work on reciprocal tails](https://arxiv.org/abs/1807.05454) |
@@ -41,21 +42,22 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A006501 | [#7979](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7979) | Awaiting statement |
 | A026008 | [#9011](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9011) | Awaiting statement |
 | A038663 | [#8946](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8946) | Awaiting statement |
-| A052183 | [#7787](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7787) | Awaiting statement |
+| A052183 | [#7787](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7787) | [Proof #9178](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9178) |
 | A054341 | [#9106](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9106) | Awaiting statement |
 | A059837 | [#8818](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8818) | Awaiting statement |
 | A062071 | [#9125](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9125) | Awaiting statement |
 | A071033 | [#7920](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7920) | Awaiting statement |
 | A071622 | [#7695](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7695) | [Disproof #9140](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9140) |
-| A076902 | Statement prepared | Awaiting statement |
+| A076902 | [#9175](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9175) | Awaiting statement |
 | A100682 | [#7921](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7921) | Awaiting statement |
 | A102827 | [#8778](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8778) | Awaiting statement |
 | A121860 | [#8822](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8822) | Awaiting statement |
-| A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | Awaiting statement |
+| A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | [Proof #9200](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9200) |
 | A152661 | [#7583](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7583) | Awaiting statement |
 | A168494 | [#7586](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7586) | Awaiting statement |
 | A191993 | [#7657](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7657) | [Proof #9059](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9059) |
 | A207262 | [#7652](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7652) | [Proof #9003](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9003) |
+| A217280 | Statement prepared | Awaiting statement |
 | A248183 | [#8021](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8021) | Awaiting statement |
 | A248186 | [#8097](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8097) | Awaiting statement |
 | A248231 | [#8169](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8169) | Awaiting statement |
