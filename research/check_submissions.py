@@ -4,6 +4,7 @@ import json
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
 from urllib.parse import urlencode
 
@@ -39,6 +40,52 @@ def receipts():
     return rows
 
 
+def fetch_main():
+    remote = UPSTREAM + ".git"
+    tip = git("ls-remote", "--exit-code", remote, "refs/heads/main")[0].split()[0]
+    for attempt in range(3):
+        present = subprocess.run(["git", "-C", ROOT, "cat-file", "-e", f"{tip}^{{commit}}"],
+                                 stderr=subprocess.DEVNULL)
+        if present.returncode == 0:
+            return tip
+        fetched = subprocess.run(["git", "-C", ROOT, "fetch", "--quiet", "--depth=1", "--no-tags",
+                                  "--no-write-fetch-head", remote, tip], capture_output=True, text=True)
+        if fetched.returncode == 0:
+            return tip
+        if attempt == 2 or not ("shallow" in fetched.stderr or "lock" in fetched.stderr):
+            raise RuntimeError(fetched.stderr.strip() or "Unable to fetch upstream main")
+        time.sleep(attempt + 1)
+
+
+def proof_readiness(problem, tip, statement_pr):
+    """Identify the merged statement that the checked proof actually imports."""
+    if not re.fullmatch(r"oeis-a[0-9]{6}", problem):
+        raise ValueError("Expected an OEIS problem ID")
+    statement = f"statements/{problem}.lean"
+    proof = f"proofs/{problem}.lean"
+    result = {"eligible": False, "main": tip}
+    if git("ls-tree", tip, "--", proof):
+        return {**result, "reason": "A proof is already on upstream main"}
+    entry = git("ls-tree", tip, "--", statement)
+    if not entry:
+        return {**result, "reason": "Waiting for the statement to merge into upstream main"}
+    if not (ROOT / statement).is_file() or not (ROOT / proof).is_file():
+        return {**result, "reason": "The local statement or proof is missing"}
+    if git("hash-object", f"--path={statement}", statement)[0] != entry[0].split()[2]:
+        return {**result, "reason": "Recheck the proof against the merged statement revision"}
+    repo_path = f"/repos/{REPO}"
+    reviewed = api(f"{repo_path}/pulls/{statement_pr}") if statement_pr else {}
+    if not reviewed.get("merged_at") or reviewed["base"]["ref"] != "main":
+        commits = api(f"{repo_path}/commits", sha=tip, path=statement, per_page=1)
+        associated = api(f"{repo_path}/commits/{commits[0]['sha']}/pulls") if commits else []
+        reviewed = next((pr for pr in associated
+                         if pr.get("merged_at") and pr["base"]["ref"] == "main"), {})
+    if not reviewed:
+        return {**result, "reason": "Waiting for a merged statement review on upstream main"}
+    return {**result, "eligible": True, "statementPR": reviewed["number"],
+            "mergedAt": reviewed["merged_at"]}
+
+
 def review_status(pr, stage):
     if pr.get("comments"):
         comments = api(f"/repos/{REPO}/issues/{pr['number']}/comments", per_page=100)
@@ -55,8 +102,8 @@ def review_status(pr, stage):
 
 
 def audit():
-    git("fetch", "--quiet", "--no-tags", "--depth=1", UPSTREAM + ".git", "refs/heads/main")
-    merged_paths = set(git("ls-tree", "-r", "--name-only", "FETCH_HEAD", "--", "proofs", "statements"))
+    tip = fetch_main()
+    merged_paths = set(git("ls-tree", "-r", "--name-only", tip, "--", "proofs", "statements"))
     research_files = set(git("diff", "--name-only", "--diff-filter=A", BASE, "--", "proofs"))
     research_files.update(git("ls-files", "--others", "--exclude-standard", "--", "proofs"))
     register = receipts()
@@ -88,6 +135,9 @@ def audit():
             if not valid:
                 message = "FIX PROOF RECEIPT"
                 needs_action = True
+            elif not state_merged:
+                message = "HOLD PROOF: statement missing on upstream main"
+                needs_action = True
             elif pr["pull_request"].get("merged_at") and file in merged_paths:
                 message = "accepted upstream"
             elif file in merged_paths:
@@ -101,8 +151,10 @@ def audit():
             print(f"{problem}  {message}  {UPSTREAM}/pull/{proof_pr}")
         elif file in merged_paths:
             print(f"{problem}  resolved upstream by a separate submission")
-        elif state_merged or not (ROOT / "statements" / f"{problem}.lean").exists():
-            print(f"{problem}  SUBMIT PROOF  {file}")
+        elif state_merged:
+            readiness = proof_readiness(problem, tip, state_pr)
+            message = "SUBMIT PROOF" if readiness["eligible"] else readiness["reason"]
+            print(f"{problem}  {message}  {file}")
             needs_action = True
         elif state_pr:
             pr = issues.get(state_pr) or api(f"{issue_path}/{state_pr}")
@@ -121,6 +173,15 @@ def audit():
 
 if __name__ == "__main__":
     try:
-        sys.exit(audit())
-    except (OSError, ValueError, KeyError, subprocess.CalledProcessError) as error:
+        if sys.argv[1:] == ["--main"]:
+            print(fetch_main())
+        elif len(sys.argv) == 3 and sys.argv[1] == "--ready-for-proof":
+            problem = sys.argv[2]
+            statement_pr = receipts().get(problem, (None, None))[0]
+            print(json.dumps(proof_readiness(problem, fetch_main(), statement_pr)))
+        elif len(sys.argv) == 1:
+            sys.exit(audit())
+        else:
+            sys.exit("Usage: check_submissions.py [--ready-for-proof oeis-aNNNNNN]")
+    except (OSError, ValueError, KeyError, RuntimeError, subprocess.CalledProcessError) as error:
         sys.exit(f"Unable to verify upstream submissions: {error}")

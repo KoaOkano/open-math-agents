@@ -3,6 +3,7 @@
 | Problem | Result | Evidence |
 | --- | --- | --- |
 | [A006501 · shifted coefficients](https://lefttosolve.com/p/oeis-a006501) | Proved the identity with A144677 from their independently published generating functions. Factoring `1 − x³` makes the two-index shift explicit. | [Statement](../statements/oeis-a006501.lean) · [Proof](../proofs/oeis-a006501.lean) |
+| [A038663 · floors with Fibonacci denominators](https://lefttosolve.com/p/oeis-a038663) | Proved Kotesovec’s asymptotic formula. For each denominator the normalized floor tends to its reciprocal. The bound `(k+1)² ≤ 4 F(k+2)` lets the limit pass through the sum and gives the reciprocal Fibonacci constant minus one. | [Statement](../statements/oeis-a038663.lean) · [Proof](../proofs/oeis-a038663.lean) |
 | [A052183 · ternary Catalan numbers](https://lefttosolve.com/p/oeis-a052183) | Proved the second-order recurrence for `(n+2) choose(3n,n)/(2n+1)` from the factorial expression. | [Statement](../statements/oeis-a052183.lean) · [Proof](../proofs/oeis-a052183.lean) |
 | [A059837 · indexing of a factorial recurrence](https://lefttosolve.com/p/oeis-a059837) | The printed recurrence has left side −38 at `n=3`, the first valid index at the published offset one. The same coefficients do satisfy an identity for every index of the zero-based list. The Lean file checks both results. | [Statement](../statements/oeis-a059837.lean) · [Disproof and corrected recurrence](../proofs/oeis-a059837.lean) |
 | [A071033 · Rule 94](https://lefttosolve.com/p/oeis-a071033) | Proved both decimal floor formulas. Two applications of the cellular automaton insert four alternating bits between fixed boundary words. | [Statement](../statements/oeis-a071033.lean) · [Proof](../proofs/oeis-a071033.lean) |
@@ -34,13 +35,14 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | Problem | Statement review | Proof or disproof review |
 | --- | --- | --- |
 | A006501 | [#7979](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7979) | Awaiting statement |
+| A038663 | Statement prepared | Awaiting statement |
 | A052183 | [#7787](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7787) | Awaiting statement |
-| A059837 | Statement prepared | [Checked disproof](../proofs/oeis-a059837.lean) |
+| A059837 | [#8818](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8818) | Awaiting statement |
 | A071033 | [#7920](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7920) | Awaiting statement |
 | A071622 | [#7695](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7695) | Awaiting statement |
 | A100682 | [#7921](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7921) | Awaiting statement |
 | A102827 | [#8778](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8778) | Awaiting statement |
-| A121860 | Statement prepared | [Checked proof](../proofs/oeis-a121860.lean) |
+| A121860 | [#8822](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8822) | Awaiting statement |
 | A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | Awaiting statement |
 | A152661 | [#7583](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7583) | Awaiting statement |
 | A168494 | [#7586](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7586) | Awaiting statement |
@@ -49,10 +51,10 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A248183 | [#8021](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8021) | Awaiting statement |
 | A248186 | [#8097](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8097) | Awaiting statement |
 | A248231 | [#8169](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8169) | Awaiting statement |
-| A257838 | Statement prepared | [Checked proof](../proofs/oeis-a257838.lean) |
+| A257838 | [#8802](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8802) | Awaiting statement |
 | A259775 | [#8764](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8764) | Awaiting statement |
 | A259914 | [#8791](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8791) | Awaiting statement |
-| A295432 | Statement prepared | [Independent Lean verification](../proofs/oeis-a295432.lean) · [Earlier published proof](https://doi.org/10.5281/zenodo.24009988) |
+| A295432 | [#8854](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8854) | Awaiting statement |
 | A393794 | [#7536](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7536) | [Disproof #7726](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726) · [Official kernel check passed](https://github.com/GuillaumeBAUD-coder/open-math-agents/actions/runs/46021758265/job/140582871094) |
 
-Run `python research/check_submissions.py` when resuming work and after a submission. It finds proof files added on this research branch, checks the official main branch and the corresponding pull requests, and flags any proof that is ready to file or needs attention. Record the actual proof PR here as soon as it opens. A result is accepted when its one-file proof PR has merged upstream.
+Run `python research/check_submissions.py` when resuming work and after a submission. Before opening any proof or disproof PR, run `python research/check_submissions.py --ready-for-proof oeis-aNNNNNN`. Wait for a merged statement review on upstream `main`, and check the proof against that exact statement. Once eligible, submit the single file under `proofs/` and record its official PR here. The results table links to the research files while review is pending. A result is accepted when its proof PR merges upstream.
