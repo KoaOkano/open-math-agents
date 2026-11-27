@@ -52,8 +52,39 @@ def receipts():
             for problem, statement, proof in receipt_rows()}
 
 
+def certificate_credit(problem, number, ledger_status):
+    url = f"https://lefttosolve.com/c/{problem}/{OWNER}"
+    result = {"problem": problem, "pr": number, "url": url, "ledgerStatus": ledger_status}
+    query = urlencode({"problem": problem, "handle": OWNER})
+    request = Request(f"https://lefttosolve.com/api/certificate?{query}",
+                      headers={"Accept": "application/json", "User-Agent": "open-math-research"})
+    try:
+        with urlopen(request, timeout=20) as response:
+            envelope = json.load(response)
+    except HTTPError as error:
+        status = "pending" if error.code == 404 else "unavailable"
+        return {**result, "status": status, "httpStatus": error.code}
+    except (URLError, TimeoutError, OSError, ValueError):
+        return {**result, "status": "unavailable"}
+
+    cert = envelope.get("certificate") if isinstance(envelope, dict) else None
+    if not isinstance(cert, dict) or cert.get("type") != "left-to-solve/contribution-certificate":
+        return {**result, "status": "unavailable"}
+    holder = cert.get("holder") or {}
+    handle = holder.get("handle") or ""
+    polarity = cert.get("result")
+    proof_url = f"{UPSTREAM}/pull/{number}"
+    matching_role = any(r.get("role") == "proof" and r.get("item") == problem and r.get("pr") == proof_url
+                        for r in holder.get("roles", []) if isinstance(r, dict))
+    if (handle.casefold() != OWNER.casefold() or (cert.get("problem") or {}).get("id") != problem
+            or polarity not in ("proof", "disproof") or not matching_role):
+        return {**result, "status": "mismatch"}
+    return {**result, "status": "recorded", "handle": handle, "polarity": polarity,
+            "certificateId": envelope.get("id")}
+
+
 def proof_credit(problem, number):
-    """Look up the site's canonical PR credit, including results restored after an outage."""
+    """Verify the problem, GitHub author, PR number and polarity on a public site receipt."""
     if not re.fullmatch(r"oeis-a[0-9]{6}", problem) or number < 1:
         raise ValueError("Expected an OEIS identifier and a positive PR number")
     url = f"https://lefttosolve.com/api/ledger?pr={number}"
@@ -63,12 +94,13 @@ def proof_credit(problem, number):
         with urlopen(request, timeout=20) as response:
             payload = json.load(response)
     except HTTPError as error:
-        status = "pending" if error.code == 404 else "unavailable"
-        return {**result, "status": status, "httpStatus": error.code}
+        missing = error.code == 404 and error.headers.get_content_type() == "application/json"
+        status = "pending" if missing else "unavailable"
+        return certificate_credit(problem, number, status)
     except (URLError, TimeoutError, OSError, ValueError):
-        return {**result, "status": "unavailable"}
+        return certificate_credit(problem, number, "unavailable")
     if not isinstance(payload, dict) or not isinstance(payload.get("entry"), dict):
-        return {**result, "status": "unavailable"}
+        return certificate_credit(problem, number, "unavailable")
     entry = payload["entry"]
     if (payload.get("pr") != number or entry.get("pr") != number or entry.get("id") != problem
             or str(entry.get("handle") or "").casefold() != OWNER.casefold() or entry.get("kind") != "proof"
