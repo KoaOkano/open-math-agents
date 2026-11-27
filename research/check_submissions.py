@@ -57,6 +57,13 @@ def desk_followups():
             if "Desk follow-up pending" in proof and pr_number(proof)]
 
 
+def statement_desk_followups():
+    """Statement PRs for which the first-party assignment service was unavailable."""
+    return [{"id": problem, "statementPR": pr_number(statement)}
+            for problem, statement, _ in receipt_rows()
+            if "Statement desk follow-up pending" in statement and pr_number(statement)]
+
+
 def fetch_main():
     remote = UPSTREAM + ".git"
     tip = git("ls-remote", "--exit-code", remote, "refs/heads/main")[0].split()[0]
@@ -241,6 +248,8 @@ if __name__ == "__main__":
             print(json.dumps(proof_queue(fetch_main())))
         elif sys.argv[1:] == ["--desk-followups"]:
             print(json.dumps(desk_followups()))
+        elif sys.argv[1:] == ["--statement-desk-followups"]:
+            print(json.dumps(statement_desk_followups()))
         elif len(sys.argv) == 3 and sys.argv[1] == "--proof-files":
             problem = sys.argv[2]
             result = proof_files(problem, fetch_main())
@@ -253,6 +262,7 @@ if __name__ == "__main__":
         elif len(sys.argv) == 1:
             sys.exit(audit())
         else:
-            sys.exit("Usage: check_submissions.py [--proof-queue | --desk-followups | --ready-for-proof oeis-aNNNNNN]")
+            sys.exit("Usage: check_submissions.py [--proof-queue | --desk-followups | "
+                     "--statement-desk-followups | --ready-for-proof oeis-aNNNNNN]")
     except (OSError, ValueError, KeyError, RuntimeError, subprocess.CalledProcessError) as error:
         sys.exit(f"Unable to verify upstream submissions: {error}")
