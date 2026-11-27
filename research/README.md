@@ -8,6 +8,7 @@
 | [A052183 · ternary Catalan numbers](https://lefttosolve.com/p/oeis-a052183) | Proved the second-order recurrence for `(n+2) choose(3n,n)/(2n+1)` from the factorial expression. | [Statement](../statements/oeis-a052183.lean) · [Proof](../proofs/oeis-a052183.lean) |
 | [A054341 · Catalan convolution row sums](https://lefttosolve.com/p/oeis-a054341) | Proved Mathar’s recurrence from Barry’s generating function. Multiplying by `2−5x` leaves `2−xC(x²)`, so consecutive Catalan numbers give the required coefficient relation. | [Statement](../statements/oeis-a054341.lean) · [Proof](../proofs/oeis-a054341.lean) |
 | [A059837 · indexing of a factorial recurrence](https://lefttosolve.com/p/oeis-a059837) | The printed recurrence has left side −38 at `n=3`, the first valid index at the published offset one. The same coefficients do satisfy an identity for every index of the zero-based list. The Lean file checks both results. | [Statement](../statements/oeis-a059837.lean) · [Disproof and corrected recurrence](../proofs/oeis-a059837.lean) |
+| [A062071 · floors with self-power denominators](https://lefttosolve.com/p/oeis-a062071) | Proved Kotesovec’s asymptotic formula with coefficient `∑ 1/jʲ`. The normalized floor with denominator `d` lies between `1/d−1/n` and `1/d`. A summable majorant allows the limit to pass through the whole sum. | [Statement](../statements/oeis-a062071.lean) · [Proof](../proofs/oeis-a062071.lean) |
 | [A071033 · Rule 94](https://lefttosolve.com/p/oeis-a071033) | Proved both decimal floor formulas. Two applications of the cellular automaton insert four alternating bits between fixed boundary words. | [Statement](../statements/oeis-a071033.lean) · [Proof](../proofs/oeis-a071033.lean) |
 | [A071622 · parity of powers of 4/3](https://lefttosolve.com/p/oeis-a071622) | Disproved the logarithmic lower bound at `n = 18,966`. Exactly 9,483 floors are odd and 9,483 are even, giving `a(n) = 0`. The Lean kernel checks the sum using exact integer division. | [Statement](../statements/oeis-a071622.lean) · [Disproof](../proofs/oeis-a071622.lean) |
 | [A100682 · fourth roots of pentatope numbers](https://lefttosolve.com/p/oeis-a100682) | At `n = 634,027,531` the proposed floor is 286,454,273. The published sequence gives 286,454,274. Taking `n` as the upper index in the binomial coefficient instead gives 286,454,272. | [Statement](../statements/oeis-a100682.lean) · [Disproof](../proofs/oeis-a100682.lean) |
@@ -40,8 +41,9 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A026008 | [#9011](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9011) | Awaiting statement |
 | A038663 | [#8946](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8946) | Awaiting statement |
 | A052183 | [#7787](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7787) | Awaiting statement |
-| A054341 | Statement prepared | Awaiting statement |
+| A054341 | [#9106](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9106) | Awaiting statement |
 | A059837 | [#8818](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8818) | Awaiting statement |
+| A062071 | Statement prepared | Awaiting statement |
 | A071033 | [#7920](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7920) | Awaiting statement |
 | A071622 | [#7695](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7695) | Awaiting statement |
 | A100682 | [#7921](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7921) | Awaiting statement |
