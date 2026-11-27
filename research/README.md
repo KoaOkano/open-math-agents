@@ -4,6 +4,7 @@
 | --- | --- | --- |
 | [A006501 · shifted coefficients](https://lefttosolve.com/p/oeis-a006501) | Proved the identity with A144677 from their independently published generating functions. Factoring `1 − x³` makes the two-index shift explicit. | [Statement](../statements/oeis-a006501.lean) · [Proof](../proofs/oeis-a006501.lean) |
 | [A052183 · ternary Catalan numbers](https://lefttosolve.com/p/oeis-a052183) | Proved the second-order recurrence for `(n+2) choose(3n,n)/(2n+1)` from the factorial expression. | [Statement](../statements/oeis-a052183.lean) · [Proof](../proofs/oeis-a052183.lean) |
+| [A059837 · indexing of a factorial recurrence](https://lefttosolve.com/p/oeis-a059837) | The printed recurrence has left side −38 at `n=3`, the first valid index at the published offset one. The same coefficients do satisfy an identity for every index of the zero-based list. The Lean file checks both results. | [Statement](../statements/oeis-a059837.lean) · [Disproof and corrected recurrence](../proofs/oeis-a059837.lean) |
 | [A071033 · Rule 94](https://lefttosolve.com/p/oeis-a071033) | Proved both decimal floor formulas. Two applications of the cellular automaton insert four alternating bits between fixed boundary words. | [Statement](../statements/oeis-a071033.lean) · [Proof](../proofs/oeis-a071033.lean) |
 | [A071622 · parity of powers of 4/3](https://lefttosolve.com/p/oeis-a071622) | Disproved the logarithmic lower bound at `n = 18,966`. Exactly 9,483 floors are odd and 9,483 are even, giving `a(n) = 0`. The Lean kernel checks the sum using exact integer division. | [Statement](../statements/oeis-a071622.lean) · [Disproof](../proofs/oeis-a071622.lean) |
 | [A100682 · fourth roots of pentatope numbers](https://lefttosolve.com/p/oeis-a100682) | At `n = 634,027,531` the proposed floor is 286,454,273. The published sequence gives 286,454,274. Taking `n` as the upper index in the binomial coefficient instead gives 286,454,272. | [Statement](../statements/oeis-a100682.lean) · [Disproof](../proofs/oeis-a100682.lean) |
@@ -34,10 +35,11 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | --- | --- | --- |
 | A006501 | [#7979](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7979) | Awaiting statement |
 | A052183 | [#7787](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7787) | Awaiting statement |
+| A059837 | Statement prepared | [Checked disproof](../proofs/oeis-a059837.lean) |
 | A071033 | [#7920](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7920) | Awaiting statement |
 | A071622 | [#7695](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7695) | Awaiting statement |
 | A100682 | [#7921](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7921) | Awaiting statement |
-| A102827 | Statement prepared | [Checked disproof](../proofs/oeis-a102827.lean) |
+| A102827 | [#8778](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8778) | Awaiting statement |
 | A121860 | Statement prepared | [Checked proof](../proofs/oeis-a121860.lean) |
 | A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | Awaiting statement |
 | A152661 | [#7583](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7583) | Awaiting statement |
@@ -48,8 +50,8 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A248186 | [#8097](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8097) | Awaiting statement |
 | A248231 | [#8169](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8169) | Awaiting statement |
 | A257838 | Statement prepared | [Checked proof](../proofs/oeis-a257838.lean) |
-| A259775 | Statement prepared | [Checked proof](../proofs/oeis-a259775.lean) |
-| A259914 | Statement prepared | [Checked proof](../proofs/oeis-a259914.lean) |
+| A259775 | [#8764](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8764) | Awaiting statement |
+| A259914 | [#8791](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8791) | Awaiting statement |
 | A295432 | Statement prepared | [Independent Lean verification](../proofs/oeis-a295432.lean) · [Earlier published proof](https://doi.org/10.5281/zenodo.24009988) |
 | A393794 | [#7536](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7536) | [Disproof #7726](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726) · [Official kernel check passed](https://github.com/GuillaumeBAUD-coder/open-math-agents/actions/runs/46021758265/job/140582871094) |
 
