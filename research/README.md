@@ -59,7 +59,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A026008 | [#9011](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9011) | [Proof #10278](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10278) |
 | A038663 | [#8946](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8946) | [Proof #10296](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10296) |
 | A052183 | [#7787](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7787) | [Proof #9178](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9178) |
-| A054341 | [#9106](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9106) | Awaiting statement |
+| A054341 | [#9106](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9106) | [Proof #10391](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10391) |
 | A059837 | [#8818](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8818) | [Disproof #10089](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10089) |
 | A062071 | [#9125](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9125) | Awaiting statement |
 | A071033 | [#7920](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7920) | [Proof #9298](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9298) |
@@ -76,7 +76,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A120069 | [#10122](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10122) | Awaiting statement |
 | A121860 | [#8822](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8822) | [Proof #10109](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10109) |
 | A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | [Proof #9200](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9200) |
-| A128939 | Statement prepared | Awaiting statement |
+| A128939 | [#10397](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10397) | Awaiting statement |
 | A152661 | [#7583](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7583) | Awaiting statement |
 | A168494 | [#7586](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7586) | Awaiting statement |
 | A191993 | [#7657](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7657) | [Proof #9059, merged](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9059) · [Official acceptance; source verification pending](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9059#issuecomment-7225402384) |
@@ -98,4 +98,4 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A390246 | [#10366](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10366) | Awaiting statement |
 | A393794 | [#7536](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7536) | [Disproof #7726, merged](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726) · [Official acceptance](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726#issuecomment-7224024391) · [35 points to KoaOkano; source statement under verification](https://lefttosolve.com/p/oeis-a393794) |
 
-Run `python research/check_submissions.py` when resuming work and after a submission. Before opening any proof or disproof PR, run `python research/check_submissions.py --ready-for-proof oeis-aNNNNNN`. Wait for a merged statement review on upstream `main`, and check the proof against that exact statement. Once eligible, submit the single file under `proofs/` and record its official PR here. The results table links to the research files while review is pending. A result is accepted when its proof PR merges upstream.
+Run `python research/check_submissions.py --proof-queue` to scan every tracked statement against current upstream `main`. The `ready` list identifies checked files whose statement merged and whose proof PR is outstanding. For each one, run `python research/check_submissions.py --ready-for-proof oeis-aNNNNNN` to verify the actual merged statement review, then submit the single file under `proofs/`. Record the official proof PR after verifying its author and changed file. Run `python research/check_submissions.py` to reconcile proof receipts with checker verdicts. A proof counts as accepted here when its PR merges upstream. The solver profile records site credit, and each problem's desk notes identify the stage and submission URL.

@@ -63,6 +63,40 @@ def fetch_main():
         time.sleep(attempt + 1)
 
 
+def proof_queue(tip):
+    """List locally prepared proofs whose statement has arrived on upstream main."""
+    blobs = {}
+    for entry in git("ls-tree", "-r", tip, "--", "statements", "proofs"):
+        header, path = entry.split("\t", 1)
+        blobs[path] = header.split()[2]
+    ready, completed, recheck = [], [], []
+    for problem, (statement_pr, proof_pr) in receipts().items():
+        statement = f"statements/{problem}.lean"
+        proof = f"proofs/{problem}.lean"
+        if proof in blobs:
+            completed.append(problem)
+            continue
+        if proof_pr or not statement_pr or statement not in blobs:
+            continue
+        if not (ROOT / proof).is_file() or not (ROOT / statement).is_file():
+            recheck.append(problem)
+            continue
+        local = git("hash-object", f"--path={statement}", statement)[0]
+        change = git("status", "--porcelain", "--", statement, proof)
+        if local != blobs[statement] or change:
+            recheck.append(problem)
+            continue
+        commit = git("log", "-1", "--format=%H", "--", proof)[0]
+        source = (ROOT / proof).read_text(encoding="utf-8")
+        theorem = re.findall(r"^theorem OMA\.(solution|disproof)\s*:", source, re.MULTILINE)
+        if len(theorem) != 1:
+            recheck.append(problem)
+            continue
+        ready.append({"id": problem, "statement": statement_pr, "commit": commit,
+                      "polarity": "disproof" if theorem[0] == "disproof" else "proof"})
+    return {"tip": tip, "ready": ready, "completed": completed, "recheck": recheck}
+
+
 def proof_files(problem, tip):
     """Identify the merged statement that the checked proof actually imports."""
     if not re.fullmatch(r"oeis-a[0-9]{6}", problem):
@@ -192,6 +226,8 @@ if __name__ == "__main__":
     try:
         if sys.argv[1:] == ["--main"]:
             print(fetch_main())
+        elif sys.argv[1:] == ["--proof-queue"]:
+            print(json.dumps(proof_queue(fetch_main())))
         elif len(sys.argv) == 3 and sys.argv[1] == "--proof-files":
             problem = sys.argv[2]
             result = proof_files(problem, fetch_main())
@@ -204,6 +240,6 @@ if __name__ == "__main__":
         elif len(sys.argv) == 1:
             sys.exit(audit())
         else:
-            sys.exit("Usage: check_submissions.py [--ready-for-proof oeis-aNNNNNN]")
+            sys.exit("Usage: check_submissions.py [--proof-queue | --ready-for-proof oeis-aNNNNNN]")
     except (OSError, ValueError, KeyError, RuntimeError, subprocess.CalledProcessError) as error:
         sys.exit(f"Unable to verify upstream submissions: {error}")
