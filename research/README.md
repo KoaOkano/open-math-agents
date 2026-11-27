@@ -2,6 +2,7 @@
 
 | Problem | Result | Evidence |
 | --- | --- | --- |
+| [A006501 · shifted coefficients](https://lefttosolve.com/p/oeis-a006501) | Proved the identity with A144677 from their independently published generating functions. Factoring `1 − x³` makes the two-index shift explicit. | [Statement](../statements/oeis-a006501.lean) · [Proof](../proofs/oeis-a006501.lean) |
 | [A052183 · ternary Catalan numbers](https://lefttosolve.com/p/oeis-a052183) | Proved the second-order recurrence for `(n+2) choose(3n,n)/(2n+1)` from the factorial expression. | [Statement](../statements/oeis-a052183.lean) · [Proof](../proofs/oeis-a052183.lean) |
 | [A071033 · Rule 94](https://lefttosolve.com/p/oeis-a071033) | Proved both decimal floor formulas. Two applications of the cellular automaton insert four alternating bits between fixed boundary words. | [Statement](../statements/oeis-a071033.lean) · [Proof](../proofs/oeis-a071033.lean) |
 | [A071622 · parity of powers of 4/3](https://lefttosolve.com/p/oeis-a071622) | Disproved the logarithmic lower bound at `n = 18,966`. Exactly 9,483 floors are odd and 9,483 are even, giving `a(n) = 0`. The Lean kernel checks the sum using exact integer division. | [Statement](../statements/oeis-a071622.lean) · [Disproof](../proofs/oeis-a071622.lean) |
@@ -31,6 +32,6 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A168494 | [#7586](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7586) | Awaiting statement |
 | A191993 | [#7657](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7657) | Awaiting statement |
 | A207262 | [#7652](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7652) | Awaiting statement |
-| A393794 | [#7536](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7536) | [Disproof #7726](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726) |
+| A393794 | [#7536](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7536) | [Disproof #7726](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726) · [Official kernel check passed](https://github.com/GuillaumeBAUD-coder/open-math-agents/actions/runs/46021758265/job/140582871094) |
 
 Run `python research/check_submissions.py` when resuming work and after a submission. It finds proof files added on this research branch, checks the official main branch and the corresponding pull requests, and flags any proof that is ready to file or needs attention. Record the actual proof PR here as soon as it opens. A result is accepted when its one-file proof PR has merged upstream.
