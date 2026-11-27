@@ -25,6 +25,7 @@
 | [A248183 · quadratic tail bound](https://lefttosolve.com/p/oeis-a248183) | Proved the proposed square-root floor gives the least admissible partial-sum index. The sum telescopes, and squares modulo four exclude the only possible rounding discrepancy. | [Statement](../statements/oeis-a248183.lean) · [Proof](../proofs/oeis-a248183.lean) |
 | [A248186 · cubic tail bound](https://lefttosolve.com/p/oeis-a248186) | Independently verified Oudra’s floor formula for Left to Solve. The cubic evaluated at the proposed threshold lies strictly between consecutive integers. The Omega Institute had already published a Lean proof. | [Statement](../statements/oeis-a248186.lean) · [Proof](../proofs/oeis-a248186.lean) · [Earlier proof](https://the-omega-institute.github.io/trureturing-mdbook/Problems/oudra-a248186-cubic-floor.html) |
 | [A248231 · tail of ζ(5)](https://lefttosolve.com/p/oeis-a248231) | Proved Oudra’s exact least-index formula. For positive `k`, the tail lies between `1/(2k(k+1)+2)²` and `1/(2k(k+1)+1)²`, strictly below the latter. The remaining rounding question follows from square residues modulo four. | [Statement](../statements/oeis-a248231.lean) · [Proof](../proofs/oeis-a248231.lean) · [Related work on reciprocal tails](https://arxiv.org/abs/1807.05454) |
+| [A248520 · indices of repeated cotangent floors](https://lefttosolve.com/p/oeis-a248520) | Proved Kotesovec’s asymptotic πn/(π−2). The count of equal consecutive floors differs from n minus the cotangent floor by a fixed integer. Its density is 1−2/π, and taking the increasing enumeration gives the proposed constant. | [Statement](../statements/oeis-a248520.lean) · [Proof](../proofs/oeis-a248520.lean) |
 | [A248521 · indices of unit cotangent floor increases](https://lefttosolve.com/p/oeis-a248521) | Proved Kotesovec’s asymptotic πn/2. Consecutive cotangents have limiting difference 2/π. Their floors eventually rise by zero or one, so counting the rises telescopes, and inverting the count gives the nth index. | [Statement](../statements/oeis-a248521.lean) · [Proof](../proofs/oeis-a248521.lean) |
 | [A257838 · Fibonacci partial sums](https://lefttosolve.com/p/oeis-a257838) | Proved Mathar’s recurrence for the main diagonal. Its second-order difference is exactly `−binom(2n+1,n+2)`. Pascal’s identity on the whole array gives this correction, and a ratio of consecutive binomials yields the proposed recurrence. | [Statement](../statements/oeis-a257838.lean) · [Proof](../proofs/oeis-a257838.lean) |
 | [A259775 · partial sums of squares](https://lefttosolve.com/p/oeis-a259775) | Proved Mathar’s four-term recurrence. A factorial formula for every entry of the repeated partial-sum array gives the recurrence on both parities of its stepped path. | [Statement](../statements/oeis-a259775.lean) · [Proof](../proofs/oeis-a259775.lean) |
@@ -51,7 +52,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A071033 | [#7920](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7920) | [Proof #9298](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9298) |
 | A071622 | [#7695](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7695) | [Disproof #9140](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9140) |
 | A076902 | [#9175](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9175) | Awaiting statement |
-| A077627 | Statement prepared | Awaiting statement |
+| A077627 | [#9342](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9342) | Awaiting statement |
 | A100682 | [#7921](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7921) | [Disproof #9311](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9311) |
 | A102827 | [#8778](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8778) | Awaiting statement |
 | A121860 | [#8822](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8822) | Awaiting statement |
@@ -64,7 +65,8 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A248183 | [#8021](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8021) | Awaiting statement |
 | A248186 | [#8097](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8097) | Awaiting statement |
 | A248231 | [#8169](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8169) | Awaiting statement |
-| A248521 | Statement prepared | Awaiting statement |
+| A248520 | Statement prepared | Awaiting statement |
+| A248521 | [#9344](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9344) | Awaiting statement |
 | A257838 | [#8802](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8802) | Awaiting statement |
 | A259775 | [#8764](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8764) | Awaiting statement |
 | A259914 | [#8791](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8791) | Awaiting statement |
