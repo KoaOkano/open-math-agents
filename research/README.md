@@ -4,6 +4,7 @@
 | --- | --- | --- |
 | [A006501 · shifted coefficients](https://lefttosolve.com/p/oeis-a006501) | Proved the identity with A144677 from their independently published generating functions. Factoring `1 − x³` makes the two-index shift explicit. | [Statement](../statements/oeis-a006501.lean) · [Proof](../proofs/oeis-a006501.lean) |
 | [A026008 · Catalan triangle recurrence](https://lefttosolve.com/p/oeis-a026008) | Proved Mathar’s five-term recurrence at every valid index for the tabulated A026008. Stephan’s two parity formulas match all 37 listed values. The short name points to a different diagonal of A008315, giving 1 at index two where the table gives 2. | [Statement](../statements/oeis-a026008.lean) · [Proof](../proofs/oeis-a026008.lean) · [OEIS formulas and data](https://oeis.org/A026008) |
+| [A036447 · double and reverse decimal digits](https://lefttosolve.com/p/oeis-a036447) | Proved Kotesovec’s nth-root limit $\sqrt{10}$. Starting at $a(6)=244$ in the reviewed indexing, the length increases exactly twice every four steps. The proof tracks the leading two and trailing two digits. | [Reviewed statement by gblacher2](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9083) · [Proof](../proofs/oeis-a036447.lean) |
 | [A038663 · floors with Fibonacci denominators](https://lefttosolve.com/p/oeis-a038663) | Proved Kotesovec’s asymptotic formula. For each denominator the normalized floor tends to its reciprocal. The bound `(k+1)² ≤ 4 F(k+2)` lets the limit pass through the sum and gives the reciprocal Fibonacci constant minus one. | [Statement](../statements/oeis-a038663.lean) · [Proof](../proofs/oeis-a038663.lean) |
 | [A052183 · ternary Catalan numbers](https://lefttosolve.com/p/oeis-a052183) | Proved the second-order recurrence for `(n+2) choose(3n,n)/(2n+1)` from the factorial expression. | [Statement](../statements/oeis-a052183.lean) · [Proof](../proofs/oeis-a052183.lean) |
 | [A054341 · Catalan convolution row sums](https://lefttosolve.com/p/oeis-a054341) | Proved Mathar’s recurrence from Barry’s generating function. Multiplying by `2−5x` leaves `2−xC(x²)`, so consecutive Catalan numbers give the required coefficient relation. | [Statement](../statements/oeis-a054341.lean) · [Proof](../proofs/oeis-a054341.lean) |
@@ -57,13 +58,14 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | --- | --- | --- |
 | A006501 | [#7979](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7979) | Awaiting statement |
 | A026008 | [#9011](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9011) | [Proof #10278](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10278) |
+| A036447 | [#9083](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9083) | Proof prepared; statement merged |
 | A038663 | [#8946](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8946) | [Proof #10296](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10296) |
-| A052183 | [#7787](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7787) | [Proof #9178](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9178) |
+| A052183 | [#7787](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7787) | [Our checked proof #9178](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9178) · [Raimo33’s proof merged first](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9173) · [Checker’s final message](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9178#issuecomment-7225641356) |
 | A054341 | [#9106](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9106) | [Proof #10391](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10391) |
 | A059837 | [#8818](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8818) | [Disproof #10089](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10089) |
 | A062071 | [#9125](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9125) | Awaiting statement |
 | A071033 | [#7920](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7920) | [Proof #9298](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9298) |
-| A071622 | [#7695](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7695) | [Disproof #9140](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9140) |
+| A071622 | [#7695](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7695) | [Disproof #9140, merged](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9140) · [Official acceptance; source verification pending](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9140#issuecomment-7225600975) |
 | A076902 | [#9175](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9175) | Awaiting statement |
 | A077627 | [#9342](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9342) | Awaiting statement |
 | A088276 | [#9834](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9834) | Awaiting statement |
@@ -75,7 +77,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A113768 | [#9608](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9608) | Awaiting statement |
 | A120069 | [#10122](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10122) | Awaiting statement |
 | A121860 | [#8822](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8822) | [Proof #10109](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10109) |
-| A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | [Proof #9200](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9200) |
+| A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | [Proof #9200, merged](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9200) · [Official acceptance; source verification pending](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9200#issuecomment-7225657576) |
 | A128939 | [#10397](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10397) | Awaiting statement |
 | A152661 | [#7583](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7583) | Awaiting statement |
 | A168494 | [#7586](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7586) | Awaiting statement |
