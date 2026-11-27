@@ -7,7 +7,9 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
+from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -48,6 +50,31 @@ def pr_number(cell):
 def receipts():
     return {problem: [pr_number(statement), pr_number(proof)]
             for problem, statement, proof in receipt_rows()}
+
+
+def proof_credit(problem, number):
+    """Look up the site's canonical PR credit, including results restored after an outage."""
+    if not re.fullmatch(r"oeis-a[0-9]{6}", problem) or number < 1:
+        raise ValueError("Expected an OEIS identifier and a positive PR number")
+    url = f"https://lefttosolve.com/api/ledger?pr={number}"
+    result = {"problem": problem, "pr": number, "url": url}
+    request = Request(url, headers={"Accept": "application/json", "User-Agent": "open-math-research"})
+    try:
+        with urlopen(request, timeout=20) as response:
+            payload = json.load(response)
+    except HTTPError as error:
+        status = "pending" if error.code == 404 else "unavailable"
+        return {**result, "status": status, "httpStatus": error.code}
+    except (URLError, TimeoutError, OSError, ValueError):
+        return {**result, "status": "unavailable"}
+    if not isinstance(payload, dict) or not isinstance(payload.get("entry"), dict):
+        return {**result, "status": "unavailable"}
+    entry = payload["entry"]
+    if (payload.get("pr") != number or entry.get("pr") != number or entry.get("id") != problem
+            or str(entry.get("handle") or "").casefold() != OWNER.casefold() or entry.get("kind") != "proof"
+            or entry.get("polarity") not in ("proof", "disproof")):
+        return {**result, "status": "mismatch"}
+    return {**result, "status": "recorded", "handle": entry["handle"], "polarity": entry["polarity"]}
 
 
 def desk_followups():
@@ -210,7 +237,12 @@ def audit():
                 message = "HOLD PROOF: statement missing on upstream main"
                 needs_action = True
             elif pr["pull_request"].get("merged_at") and file in merged_paths:
-                message = "accepted upstream"
+                credit = proof_credit(problem, proof_pr)
+                if credit["status"] == "recorded":
+                    message = f"accepted upstream, {credit['polarity']} credited to {credit['handle']}"
+                else:
+                    message = f"accepted upstream, site credit {credit['status']}"
+                    needs_action |= credit["status"] == "mismatch"
             elif file in merged_paths:
                 message = "resolved upstream; verify solver credit"
             elif pr["state"] == "closed":
@@ -252,6 +284,8 @@ if __name__ == "__main__":
             print(json.dumps(desk_followups()))
         elif sys.argv[1:] == ["--statement-desk-followups"]:
             print(json.dumps(statement_desk_followups()))
+        elif len(sys.argv) == 4 and sys.argv[1] == "--proof-credit":
+            print(json.dumps(proof_credit(sys.argv[2], int(sys.argv[3]))))
         elif len(sys.argv) == 3 and sys.argv[1] == "--proof-files":
             problem = sys.argv[2]
             result = proof_files(problem, fetch_main())
@@ -264,7 +298,8 @@ if __name__ == "__main__":
         elif len(sys.argv) == 1:
             sys.exit(audit())
         else:
-            sys.exit("Usage: check_submissions.py [--proof-queue | --desk-followups | "
-                     "--statement-desk-followups | --ready-for-proof oeis-aNNNNNN]")
+            sys.exit("Usage: check_submissions.py [--main | --proof-queue | --desk-followups | "
+                     "--statement-desk-followups | --proof-files oeis-aNNNNNN | "
+                     "--ready-for-proof oeis-aNNNNNN | --proof-credit oeis-aNNNNNN PR]")
     except (OSError, ValueError, KeyError, RuntimeError, subprocess.CalledProcessError) as error:
         sys.exit(f"Unable to verify upstream submissions: {error}")
