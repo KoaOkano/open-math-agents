@@ -3,6 +3,7 @@
 | Problem | Result | Evidence |
 | --- | --- | --- |
 | [A006501 · shifted coefficients](https://lefttosolve.com/p/oeis-a006501) | Proved the identity with A144677 from their independently published generating functions. Factoring `1 − x³` makes the two-index shift explicit. | [Statement](../statements/oeis-a006501.lean) · [Proof](../proofs/oeis-a006501.lean) |
+| [A026008 · Catalan triangle recurrence](https://lefttosolve.com/p/oeis-a026008) | Proved Mathar’s five-term recurrence at every valid index for the tabulated A026008. Stephan’s two parity formulas match all 37 listed values. The short name points to a different diagonal of A008315, giving 1 at index two where the table gives 2. | [Statement](../statements/oeis-a026008.lean) · [Proof](../proofs/oeis-a026008.lean) · [OEIS formulas and data](https://oeis.org/A026008) |
 | [A038663 · floors with Fibonacci denominators](https://lefttosolve.com/p/oeis-a038663) | Proved Kotesovec’s asymptotic formula. For each denominator the normalized floor tends to its reciprocal. The bound `(k+1)² ≤ 4 F(k+2)` lets the limit pass through the sum and gives the reciprocal Fibonacci constant minus one. | [Statement](../statements/oeis-a038663.lean) · [Proof](../proofs/oeis-a038663.lean) |
 | [A052183 · ternary Catalan numbers](https://lefttosolve.com/p/oeis-a052183) | Proved the second-order recurrence for `(n+2) choose(3n,n)/(2n+1)` from the factorial expression. | [Statement](../statements/oeis-a052183.lean) · [Proof](../proofs/oeis-a052183.lean) |
 | [A059837 · indexing of a factorial recurrence](https://lefttosolve.com/p/oeis-a059837) | The printed recurrence has left side −38 at `n=3`, the first valid index at the published offset one. The same coefficients do satisfy an identity for every index of the zero-based list. The Lean file checks both results. | [Statement](../statements/oeis-a059837.lean) · [Disproof and corrected recurrence](../proofs/oeis-a059837.lean) |
@@ -35,7 +36,8 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | Problem | Statement review | Proof or disproof review |
 | --- | --- | --- |
 | A006501 | [#7979](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7979) | Awaiting statement |
-| A038663 | Statement prepared | Awaiting statement |
+| A026008 | Statement prepared | Awaiting statement |
+| A038663 | [#8946](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8946) | Awaiting statement |
 | A052183 | [#7787](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7787) | Awaiting statement |
 | A059837 | [#8818](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8818) | Awaiting statement |
 | A071033 | [#7920](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7920) | Awaiting statement |

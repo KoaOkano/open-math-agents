@@ -2,6 +2,7 @@
 
 import json
 import re
+import shutil
 import subprocess
 import sys
 import time
@@ -21,9 +22,14 @@ def git(*args):
 
 
 def api(path, **params):
-    url = "https://api.github.com" + path + "?" + urlencode(params)
+    endpoint = path + ("?" + urlencode(params) if params else "")
+    gh = shutil.which("gh")
+    if gh:
+        response = subprocess.run([gh, "api", endpoint], capture_output=True)
+        if response.returncode == 0:
+            return json.loads(response.stdout)
     data = subprocess.check_output(["curl", "--fail", "--silent", "--show-error",
-                                    "--max-time", "30", url])
+                                    "--max-time", "30", "https://api.github.com" + endpoint])
     return json.loads(data)
 
 
@@ -57,7 +63,7 @@ def fetch_main():
         time.sleep(attempt + 1)
 
 
-def proof_readiness(problem, tip, statement_pr):
+def proof_files(problem, tip):
     """Identify the merged statement that the checked proof actually imports."""
     if not re.fullmatch(r"oeis-a[0-9]{6}", problem):
         raise ValueError("Expected an OEIS problem ID")
@@ -73,6 +79,14 @@ def proof_readiness(problem, tip, statement_pr):
         return {**result, "reason": "The local statement or proof is missing"}
     if git("hash-object", f"--path={statement}", statement)[0] != entry[0].split()[2]:
         return {**result, "reason": "Recheck the proof against the merged statement revision"}
+    return {**result, "filesMatch": True}
+
+
+def proof_readiness(problem, tip, statement_pr):
+    result = proof_files(problem, tip)
+    if not result.get("filesMatch"):
+        return result
+    statement = f"statements/{problem}.lean"
     repo_path = f"/repos/{REPO}"
     reviewed = api(f"{repo_path}/pulls/{statement_pr}") if statement_pr else {}
     if not reviewed.get("merged_at") or reviewed["base"]["ref"] != "main":
@@ -82,6 +96,9 @@ def proof_readiness(problem, tip, statement_pr):
                          if pr.get("merged_at") and pr["base"]["ref"] == "main"), {})
     if not reviewed:
         return {**result, "reason": "Waiting for a merged statement review on upstream main"}
+    files = api(f"{repo_path}/pulls/{reviewed['number']}/files", per_page=100)
+    if not any(file["filename"] == statement for file in files):
+        return {**result, "reason": "The recorded review did not merge this statement file"}
     return {**result, "eligible": True, "statementPR": reviewed["number"],
             "mergedAt": reviewed["merged_at"]}
 
@@ -175,6 +192,11 @@ if __name__ == "__main__":
     try:
         if sys.argv[1:] == ["--main"]:
             print(fetch_main())
+        elif len(sys.argv) == 3 and sys.argv[1] == "--proof-files":
+            problem = sys.argv[2]
+            result = proof_files(problem, fetch_main())
+            result["registeredStatement"] = receipts().get(problem, (None, None))[0]
+            print(json.dumps(result))
         elif len(sys.argv) == 3 and sys.argv[1] == "--ready-for-proof":
             problem = sys.argv[2]
             statement_pr = receipts().get(problem, (None, None))[0]
