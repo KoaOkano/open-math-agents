@@ -35,6 +35,7 @@
 | [A307812 · triangular digit products](https://lefttosolve.com/p/oeis-a307812) | Exhaustively checked all triangular values below 10³⁰⁰. There are 47 terms, including two beyond the OEIS table. Both conjectured properties hold throughout this finite range. | [Values and reproducible search](a307812/README.md) |
 | [A345096 · an asymptotic for a floor-and-ceiling double sum](https://lefttosolve.com/p/oeis-a345096) | Proved Kotesovec’s n²/2 asymptotic. Subtracting the triangular number leaves at most n times the divisor count. Pairing divisors gives an explicit error bound of 2n(⌊√n⌋+1). | [Statement](../statements/oeis-a345096.lean) · [Proof](../proofs/oeis-a345096.lean) |
 | [A366860 · nested recurrence with denominator 3](https://lefttosolve.com/p/oeis-a366860) | Proved the slope (√21−3)/2 with the bound |a(n)−cn| ≤ 16√n, and proved the periodic continued fraction converges to the same constant. | [Statement](../statements/oeis-a366860.lean) · [Proof](../proofs/oeis-a366860.lean) |
+| [A366870 · nested recurrence with denominator 4](https://lefttosolve.com/p/oeis-a366870) | Proved the slope 2(√2−1) with the bound |a(n)−cn| ≤ 16√n, and proved the periodic continued fraction converges to the same constant. | [Statement](../statements/oeis-a366870.lean) · [Proof](../proofs/oeis-a366870.lean) |
 | [A393794 · 1089 trick](https://lefttosolve.com/p/oeis-a393794) | Disproved the uniqueness assertion at index 5. Both 108,910,890 and 109,999,890 are nine-digit fixed points. The Lean kernel checked the disproof. | [Statement](../statements/oeis-a393794.lean) · [Disproof](../proofs/oeis-a393794.lean) |
 | [A401895 · reversal products](https://lefttosolve.com/p/oeis-a401895) | Finite search excludes products consisting of an even number of sixes for inputs of 2–601 digits. The conjecture is open. | [Search and derivation](a401895/README.md) |
 
@@ -77,7 +78,8 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A259914 | [#8791](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8791) | Awaiting statement |
 | A295432 | [#8854](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8854) | Awaiting statement |
 | A345096 | [#9498](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9498) | Awaiting statement |
-| A366860 | Statement prepared | Awaiting statement |
+| A366860 | [#9625](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9625) | Awaiting statement |
+| A366870 | Statement prepared | Awaiting statement |
 | A393794 | [#7536](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7536) | [Disproof #7726, merged](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726) · [Official acceptance](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726#issuecomment-7224024391) · [35 points to KoaOkano; source statement under verification](https://lefttosolve.com/p/oeis-a393794) |
 
 Run `python research/check_submissions.py` when resuming work and after a submission. Before opening any proof or disproof PR, run `python research/check_submissions.py --ready-for-proof oeis-aNNNNNN`. Wait for a merged statement review on upstream `main`, and check the proof against that exact statement. Once eligible, submit the single file under `proofs/` and record its official PR here. The results table links to the research files while review is pending. A result is accepted when its proof PR merges upstream.
