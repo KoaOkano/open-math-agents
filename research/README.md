@@ -19,7 +19,7 @@
 | [A102827 · decimal digit counts](https://lefttosolve.com/p/oeis-a102827) | Disproved the rule as written and implemented by the decimal Maple program. At index 331 the term 1002 introduces two zeros. The least eligible positive integer at index 332 is then 20. The calculation matches all 72 published table values and the later examples at indices 99–106 and 142. The base-two companion lists an increasing variant. | [Statement](../statements/oeis-a102827.lean) · [Disproof](../proofs/oeis-a102827.lean) · [Decimal program](https://oeis.org/A102827/internal) |
 | [A103528 · binary congruences as a first difference](https://lefttosolve.com/p/oeis-a103528) | Proved Kurkov’s 2022 formula. A downward rounding to a multiple of 2^k jumps exactly at the relevant congruence class. Summing those jumps, including the unit contribution at k=0, yields b(n)−b(n−1)=1+2a(n). | [Statement](../statements/oeis-a103528.lean) · [Proof](../proofs/oeis-a103528.lean) |
 | [A113768 · growth of a cube-root recurrence](https://lefttosolve.com/p/oeis-a113768) | Proved the 2024 asymptotic (2n/3)√(2n/3). Consecutive squared cube roots differ by a quantity tending to 2/3. Averaging these differences gives the claimed growth rate. | [Statement](../statements/oeis-a113768.lean) · [Proof](../proofs/oeis-a113768.lean) |
-| [A120069 · denominators of Catalan partial sums](https://lefttosolve.com/p/oeis-a120069) | Proved both denominator conjectures. The partial sum equals 4−(2n+1)C(n)/4ⁿ⁻¹, and its reduced denominator is exactly 2^(A283208(n)−2). | [Statement](../statements/oeis-a120069.lean) · [Proof](../proofs/oeis-a120069.lean) |
+| [A120069 · denominators of Catalan partial sums](https://lefttosolve.com/p/oeis-a120069) | Proved both denominator conjectures. The partial sum is $4-(2n+1)C_n/4^{n-1}$, and its reduced denominator is $2^{A283208(n)-2}$. | [Statement](../statements/oeis-a120069.lean) · [Proof](../proofs/oeis-a120069.lean) |
 | [A121860 · factorial divisor sum](https://lefttosolve.com/p/oeis-a121860) | Proved that the residue is 2 modulo every `k ≥ 3` once `n ≥ 2k+4`. Every summand from a proper factorization `n=ab`, with both factors at least two, is divisible by `k!`. The divisors 1 and `n` each contribute one. | [Statement](../statements/oeis-a121860.lean) · [Proof](../proofs/oeis-a121860.lean) |
 | [A127769 · binomial recurrence](https://lefttosolve.com/p/oeis-a127769) | Proved the proposed ratio between consecutive positive-index terms by cancelling factorials. | [Statement](../statements/oeis-a127769.lean) · [Proof](../proofs/oeis-a127769.lean) |
 | [A152661 · permutations](https://lefttosolve.com/p/oeis-a152661) | Proved both the recurrence and the identity with A077613 by counting labels of each parity. | [Statement](../statements/oeis-a152661.lean) · [Proof](../proofs/oeis-a152661.lean) |
@@ -39,8 +39,8 @@
 | [A307812 · triangular digit products](https://lefttosolve.com/p/oeis-a307812) | Exhaustively checked all triangular values below 10³⁰⁰. There are 47 terms, including two beyond the OEIS table. Both conjectured properties hold throughout this finite range. | [Values and reproducible search](a307812/README.md) |
 | [A334337 · a multiple with cube totient](https://lefttosolve.com/p/oeis-a334337) | Proved Sun’s existence conjecture constructively. With F=n!, the multiple F·φ(F)² has totient φ(F)³. The same construction produces every positive power, including the accompanying square case. | [Statement](../statements/oeis-a334337.lean) · [Proof](../proofs/oeis-a334337.lean) |
 | [A345096 · an asymptotic for a floor-and-ceiling double sum](https://lefttosolve.com/p/oeis-a345096) | Proved Kotesovec’s n²/2 asymptotic. Subtracting the triangular number leaves at most n times the divisor count. Pairing divisors gives an explicit error bound of 2n(⌊√n⌋+1). | [Statement](../statements/oeis-a345096.lean) · [Proof](../proofs/oeis-a345096.lean) |
-| [A366860 · nested recurrence with denominator 3](https://lefttosolve.com/p/oeis-a366860) | Proved the slope (√21−3)/2 with the bound |a(n)−cn| ≤ 16√n, and proved the periodic continued fraction converges to the same constant. | [Statement](../statements/oeis-a366860.lean) · [Proof](../proofs/oeis-a366860.lean) |
-| [A366870 · nested recurrence with denominator 4](https://lefttosolve.com/p/oeis-a366870) | Proved the slope 2(√2−1) with the bound |a(n)−cn| ≤ 16√n, and proved the periodic continued fraction converges to the same constant. | [Statement](../statements/oeis-a366870.lean) · [Proof](../proofs/oeis-a366870.lean) |
+| [A366860 · nested recurrence with denominator 3](https://lefttosolve.com/p/oeis-a366860) | Proved the slope $c=(\sqrt{21}-3)/2$, the error bound $\lvert a(n)-cn\rvert\le16\sqrt n$, and convergence of the periodic continued fraction to $c$. | [Statement](../statements/oeis-a366860.lean) · [Proof](../proofs/oeis-a366860.lean) |
+| [A366870 · nested recurrence with denominator 4](https://lefttosolve.com/p/oeis-a366870) | Proved the slope $c=2(\sqrt2-1)$, the error bound $\lvert a(n)-cn\rvert\le16\sqrt n$, and convergence of the periodic continued fraction to $c$. | [Statement](../statements/oeis-a366870.lean) · [Proof](../proofs/oeis-a366870.lean) |
 | [A393794 · 1089 trick](https://lefttosolve.com/p/oeis-a393794) | Disproved the uniqueness assertion at index 5. Both 108,910,890 and 109,999,890 are nine-digit fixed points. The Lean kernel checked the disproof. | [Statement](../statements/oeis-a393794.lean) · [Disproof](../proofs/oeis-a393794.lean) |
 | [A401895 · reversal products](https://lefttosolve.com/p/oeis-a401895) | Finite search excludes products consisting of an even number of sixes for inputs of 2–601 digits. The conjecture is open. | [Search and derivation](a401895/README.md) |
 
@@ -69,8 +69,8 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A102827 | [#8778](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8778) | [Disproof #10022](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10022) |
 | A103528 | [#9923](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9923) | Awaiting statement |
 | A113768 | [#9608](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9608) | Awaiting statement |
-| A120069 | Statement prepared | Awaiting statement |
-| A121860 | [#8822](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8822) | Awaiting statement |
+| A120069 | [#10122](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10122) | Awaiting statement |
+| A121860 | [#8822](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8822) | [Proof #10109](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10109) |
 | A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | [Proof #9200](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9200) |
 | A152661 | [#7583](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7583) | Awaiting statement |
 | A168494 | [#7586](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7586) | Awaiting statement |
@@ -82,10 +82,10 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A248231 | [#8169](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8169) | Awaiting statement |
 | A248520 | [#9434](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9434) | Awaiting statement |
 | A248521 | [#9344](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9344) | Awaiting statement |
-| A257838 | [#8802](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8802) | Awaiting statement |
+| A257838 | [#8802](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8802) | [Proof #10142](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10142) |
 | A259775 | [#8764](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8764) | [Proof #9983](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9983) |
 | A259914 | [#8791](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8791) | [Proof #10050](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10050) |
-| A295432 | [#8854](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8854) | Awaiting statement |
+| A295432 | [#8854](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/8854) | [Proof #10178](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10178) |
 | A334337 | [#9821](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9821) | Awaiting statement |
 | A345096 | [#9498](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9498) | Awaiting statement |
 | A366860 | [#9625](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/9625) | Awaiting statement |
