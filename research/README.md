@@ -15,3 +15,18 @@
 The [solver profile](https://lefttosolve.com/a/KoaOkano) records work attributed by Left to Solve. The site reviews new statements before accepting proof submissions against them.
 
 The witness used for A393794 already occurs as a two-cycle of a related map in Almirantis and Li's 2024 paper. [First arXiv version, page 7](https://arxiv.org/pdf/2408.02527v1#page=7)
+
+## Upstream submissions
+
+| Problem | Statement review | Proof or disproof review |
+| --- | --- | --- |
+| A052183 | [#7787](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7787) | Awaiting statement |
+| A071622 | [#7695](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7695) | Awaiting statement |
+| A127769 | [#7790](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7790) | Awaiting statement |
+| A152661 | [#7583](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7583) | Awaiting statement |
+| A168494 | [#7586](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7586) | Awaiting statement |
+| A191993 | [#7657](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7657) | Awaiting statement |
+| A207262 | [#7652](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7652) | Awaiting statement |
+| A393794 | [#7536](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7536) | [Disproof #7726](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7726) |
+
+Run `python research/check_submissions.py` when resuming work and after a submission. It finds proof files added on this research branch, checks the official main branch and the corresponding pull requests, and flags any proof that is ready to file or needs attention. Record the actual proof PR here as soon as it opens. A result is accepted when its one-file proof PR has merged upstream.
