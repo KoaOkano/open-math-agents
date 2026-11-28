@@ -20,7 +20,7 @@ UPSTREAM = f"https://github.com/{REPO}"
 
 
 def git(*args):
-    return subprocess.check_output(["git", "-C", ROOT, *args], text=True).splitlines()
+    return subprocess.check_output(["git", "--no-optional-locks", "-C", ROOT, *args], text=True).splitlines()
 
 
 def api(path, **params):
@@ -123,23 +123,28 @@ def statement_desk_followups():
             if "Statement desk follow-up pending" in statement and pr_number(statement)]
 
 
+def remote_git(*args):
+    transient = (".lock", "shallow file has changed", "empty reply from server", "connection reset",
+                 "timed out", "could not resolve host", "error: 502", "error: 503", "error: 504")
+    for attempt in range(1, 9):
+        result = subprocess.run(["git", "-C", ROOT, *args], capture_output=True, text=True)
+        if result.returncode == 0:
+            return result.stdout
+        if attempt == 8 or not any(message in result.stderr.lower() for message in transient):
+            raise RuntimeError(result.stderr.strip() or "Unable to read upstream main")
+        time.sleep(min(5, attempt))
+
+
 def fetch_main():
     remote = UPSTREAM + ".git"
-    tip = git("ls-remote", "--exit-code", remote, "refs/heads/main")[0].split()[0]
-    attempts = 8
-    for attempt in range(attempts):
-        present = subprocess.run(["git", "-C", ROOT, "cat-file", "-e", f"{tip}^{{commit}}"],
-                                 stderr=subprocess.DEVNULL)
-        if present.returncode == 0:
-            return tip
-        fetched = subprocess.run(["git", "-C", ROOT, "fetch", "--quiet", "--depth=1", "--no-tags",
-                                  "--no-write-fetch-head", remote, tip], capture_output=True, text=True)
-        if fetched.returncode == 0:
-            return tip
-        contention = ".lock" in fetched.stderr or "shallow file has changed" in fetched.stderr
-        if attempt + 1 == attempts or not contention:
-            raise RuntimeError(fetched.stderr.strip() or "Unable to fetch upstream main")
-        time.sleep(min(5, attempt + 1))
+    head = remote_git("ls-remote", "--exit-code", remote, "refs/heads/main").split()
+    if len(head) != 2 or head[1] != "refs/heads/main" or not re.fullmatch(r"[0-9a-f]{40}", head[0]):
+        raise RuntimeError("Upstream did not return a valid main ref")
+    tip = head[0]
+    present = subprocess.run(["git", "-C", ROOT, "cat-file", "-e", f"{tip}^{{commit}}"], stderr=subprocess.DEVNULL)
+    if present.returncode:
+        remote_git("fetch", "--quiet", "--depth=1", "--no-tags", "--no-write-fetch-head", remote, tip)
+    return tip
 
 
 def proof_queue(tip):
