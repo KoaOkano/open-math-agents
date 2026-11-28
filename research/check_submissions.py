@@ -109,18 +109,28 @@ def proof_credit(problem, number):
     return {**result, "status": "recorded", "handle": entry["handle"], "polarity": entry["polarity"]}
 
 
-def desk_followups():
-    """GitHub receipts whose submission still needs linking on the problem desk."""
-    return [{"id": problem, "proofPR": pr_number(proof)}
-            for problem, _, proof in receipt_rows()
-            if "Desk follow-up pending" in proof and pr_number(proof)]
+def desk_followups(stage="proof"):
+    """Find public follow-up flags and releases whose submission note was never confirmed."""
+    is_statement = stage == "statement"
+    marker = "Statement desk follow-up pending" if is_statement else "Desk follow-up pending"
+    result = []
+    for problem, statement, proof in receipt_rows():
+        cell = statement if is_statement else proof
+        number = pr_number(cell)
+        if not number:
+            continue
+        receipt = ROOT / ".oma" / "leases" / f"{problem}.desk-pr-{number}"
+        try:
+            local_status = receipt.read_text(encoding="utf-8").strip()
+        except FileNotFoundError:
+            local_status = ""
+        if marker in cell or local_status in {"assigned", "expired", "released-note-unconfirmed"}:
+            result.append({"id": problem, f"{stage}PR": number})
+    return result
 
 
 def statement_desk_followups():
-    """Statement PRs for which the first-party assignment service was unavailable."""
-    return [{"id": problem, "statementPR": pr_number(statement)}
-            for problem, statement, _ in receipt_rows()
-            if "Statement desk follow-up pending" in statement and pr_number(statement)]
+    return desk_followups("statement")
 
 
 def remote_git(*args, attempts=8, timeout=75):
