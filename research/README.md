@@ -422,7 +422,7 @@ Use `python research/check_submissions.py --statement-desk-followups` for statem
 
 ## Filing order and recorded credit
 
-For these six problems, KoaOkano filed a one-file Lean proof after the statement merged. Each original proof passed the upstream check before the site merged a later submission. The checked file still matches the original PR. The last column links the credited solver in the site’s ledger.
+For these six problems, KoaOkano filed a one-file Lean proof after the statement merged. Each original proof passed the upstream check before the site merged a later submission. The checked file still matches the original PR. The last column links the credited solver in the site’s ledger. KoaOkano requested an attribution review in [proof PR #10688](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10688).
 
 Filing and check times below are on November 27, 2026. All times are UTC.
 
