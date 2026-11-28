@@ -424,6 +424,8 @@ During an HTTP 500 outage, our GitHub submissions disclose the failed assignment
 
 Use `python research/check_submissions.py --statement-desk-followups` for statement PRs awaiting a site activity record. New statement-only submissions link the source conjecture. A full proof held locally is published after the matching statement merges on upstream `main` and the pinned Lean compiler rechecks the exact files.
 
+On November 28, 2026, the 103 complete Lean proofs and disproofs awaiting statement merges were recorded by [SHA-256 checksum](proof-checksums-2026-11-28.sha256). Each digest covers the exact checked UTF-8 proof source with Git’s LF line endings. Once the proof PR opens, its file can be compared with this timestamped record. The official submission and credit are tracked in the PR table.
+
 ## Filing order and recorded credit
 
 For these six problems, KoaOkano filed a one-file Lean proof after the statement merged. Each original proof passed the upstream check before the site merged a later submission. The checked file still matches the original PR. The last column links the credited solver in the site’s ledger. KoaOkano requested an attribution review in [proof PR #10688](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/10688).
