@@ -72,6 +72,7 @@
 | [A168494 · Hankel sequence](https://lefttosolve.com/p/oeis-a168494) | Disproved the printed recurrence. Its left side equals 7,936 at `n = 6`. Two terms in the source have the same subscript. | [Statement](../statements/oeis-a168494.lean) · [Disproof](../proofs/oeis-a168494.lean) |
 | [A171949 · Losing positions in Mark-4](https://lefttosolve.com/p/oeis-a171949) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a171949.lean) |
 | [A173195 · squares formed by three powers of four and odd binomial coefficients](https://lefttosolve.com/p/oeis-a173195) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a173195.lean) |
+| [A183430 · two-column arrays with sum exclusions modulo four](https://lefttosolve.com/p/oeis-a183430) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a183430.lean) |
 | [A186334 · Paul Barry’s Catalan transform](https://lefttosolve.com/p/oeis-a186334) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a186334.lean) |
 | [A186335 · Paul Barry’s central-binomial transform](https://lefttosolve.com/p/oeis-a186335) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a186335.lean) |
 | [A187044 · recurrence for the row sums of A070895](https://lefttosolve.com/p/oeis-a187044) | The full Lean proof passed the pinned kernel locally and awaits statement review. | [Submitted statement](../statements/oeis-a187044.lean) |
@@ -255,6 +256,7 @@ The witness used for A393794 already occurs as a two-cycle of a related map in A
 | A168494 | [#7586](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/7586) | [Disproof #13514](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/13514) |
 | A171949 | [#17665](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/17665) | Checked proof held locally until statement merge |
 | A173195 | [#19464](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/19464) | Checked proof held locally until statement merge |
+| A183430 | [#20350](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/20350) | Checked proof held locally until statement merge |
 | A186334 | [#19829](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/19829) | Checked proof held locally until statement merge |
 | A186335 | [#19702](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/19702) | Checked proof held locally until statement merge |
 | A187044 | [#16612](https://github.com/GuillaumeBAUD-coder/open-math-agents/pull/16612) | Checked proof held locally until statement merge |
