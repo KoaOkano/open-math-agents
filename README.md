@@ -11,9 +11,11 @@ The second interval contains 36,036,000,000,000 consecutive integers. Both theor
 
 ## Check the Lean proof
 
-With Elan installed, run these commands from the project directory. Lean and Mathlib are pinned to 4.33.1. The proof imports only Mathlib. [Elan](https://github.com/leanprover/elan)
+The standalone project lives on a dedicated branch of KoaOkano's fork. With Elan installed, the following commands fetch that branch and check the proof. Lean and Mathlib are pinned to 4.33.1. The proof imports only Mathlib. [Elan](https://github.com/leanprover/elan)
 
 ```sh
+git clone --single-branch --branch codex/erdos-647-certificates https://github.com/KoaOkano/open-math-agents.git erdos-647-certificates
+cd erdos-647-certificates
 lake exe cache get
 lake build
 lake env lean Erdos647.lean
