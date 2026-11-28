@@ -123,21 +123,33 @@ def statement_desk_followups():
             if "Statement desk follow-up pending" in statement and pr_number(statement)]
 
 
-def remote_git(*args):
+def remote_git(*args, attempts=8, timeout=75):
     transient = (".lock", "shallow file has changed", "empty reply from server", "connection reset",
+                 "connection was reset", "expected flush after ref listing", "early eof",
                  "timed out", "could not resolve host", "error: 502", "error: 503", "error: 504")
-    for attempt in range(1, 9):
-        result = subprocess.run(["git", "-C", ROOT, *args], capture_output=True, text=True)
-        if result.returncode == 0:
-            return result.stdout
-        if attempt == 8 or not any(message in result.stderr.lower() for message in transient):
-            raise RuntimeError(result.stderr.strip() or "Unable to read upstream main")
+    for attempt in range(1, attempts + 1):
+        try:
+            result = subprocess.run(["git", "-C", ROOT, *args], capture_output=True, text=True,
+                                    timeout=timeout)
+            if result.returncode == 0:
+                return result.stdout
+            error = result.stderr.strip() or "Unable to read upstream main"
+        except subprocess.TimeoutExpired:
+            error = "Git timed out reading upstream"
+        if attempt == attempts or not any(message in error.lower() for message in transient):
+            raise RuntimeError(error)
         time.sleep(min(5, attempt))
 
 
 def fetch_main():
     remote = UPSTREAM + ".git"
-    head = remote_git("ls-remote", "--exit-code", remote, "refs/heads/main").split()
+    try:
+        head = remote_git("ls-remote", "--exit-code", remote, "refs/heads/main",
+                          attempts=1, timeout=18).split()
+    except RuntimeError:
+        ref = api(f"/repos/{REPO}/git/ref/heads/main")
+        obj = ref.get("object", {})
+        head = [obj.get("sha", ""), ref.get("ref", "")] if obj.get("type") == "commit" else []
     if len(head) != 2 or head[1] != "refs/heads/main" or not re.fullmatch(r"[0-9a-f]{40}", head[0]):
         raise RuntimeError("Upstream did not return a valid main ref")
     tip = head[0]
